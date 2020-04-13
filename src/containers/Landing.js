@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Login from '../components/Login'
+import Login from '../components/Login';
+import Signup from '../components/Signup';
 
 export default class Landing extends Component {
 
@@ -8,7 +9,8 @@ export default class Landing extends Component {
     render(){
         return(
             <div>
-                <Login/>
+                <Login onLogin={this.props.onLogin} history={this.props.history} />
+                {/* <Signup /> */}
             </div>
         )
     }
