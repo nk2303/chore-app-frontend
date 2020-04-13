@@ -10,7 +10,7 @@ export default class HouseContainer extends Component {
 
     // Unassigned chores shrinks as unassigned chores are assigned / "No Chores to Assign!"
 
-    // 
+    
 
     render(){
         return(
