@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserChoreContainer from './UserChoreContainer'
-import UnassignedChoresContainer from './ChoresContainer'
+import UnassignedChoresContainer from './UnassignedChoresContainer'
 import Schedule from './Schedule'
 import CommentContainer from './CommentContainer'
 

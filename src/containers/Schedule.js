@@ -19,25 +19,7 @@ const Schedule = () => {
         return(
             <div>
             Schedule Container
-                <Container>
-                    <Row>
-                        <Col size={2}>
-                            <Chore/>
-                        </Col>
-                        <Col size={2}>
-                            <Chore/>
-                        </Col>
-                        <Col size={2}>
-                            <Chore/>
-                        </Col>
-                        <Col size={2}>
-                            <Chore/>
-                        </Col>
-                        <Col size={2}>
-                            <Chore/>
-                        </Col>
-                    </Row>
-                </Container>
+                
             </div>
         )
     }
