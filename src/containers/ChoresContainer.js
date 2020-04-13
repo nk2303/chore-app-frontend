@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ChoresContainer extends Component {
+export default class UnassignedChoresContainer extends Component {
 
     // Unassigned chores / descriptions live here
 
