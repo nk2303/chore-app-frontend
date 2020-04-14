@@ -12,8 +12,8 @@ import background from '../assets/recycling-texture.JPG';
 class App extends React.Component {
    sectionStyle = {
     backgroundImage: `url(${background})`,
-    'min-height': '800px',
-    'background-size':'cover'
+    minHeight: '800px',
+    backgroundSize:'cover'
   };
 
   constructor() {

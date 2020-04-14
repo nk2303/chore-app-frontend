@@ -136,7 +136,7 @@ render() {
         />
         </Form.Group>
         <Form.Group>
-        <Button variant="secondary" type="submit">
+        <Button variant="secondary" type="submit" block>
             Create account
         </Button>
         </Form.Group>

@@ -8,15 +8,15 @@ import Dropdown from 'react-bootstrap/Dropdown'
 export default class NavBar extends React.Component {
   render() {
     const titleStyle = {
-      'font-size': '30px',
+      fontSize: '30px',
       opacity: '0.7',
-      'font-family': 'Chalkduster',
+      fontFamily: 'Chalkduster',
     };
 
     return (
       <div>
-        <header id='topbar' class="row">
-            <div class="col-1">
+        <header id='topbar' className="row">
+            <div className="col-1">
                 <Dropdown>
                 <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
                     Navigate
@@ -30,15 +30,15 @@ export default class NavBar extends React.Component {
                 </Dropdown.Menu>
                 </Dropdown>
             </div>
-            <div class="col-2">
+            <div className="col-2">
                 Made by Diana, Jonny and Kim
             </div>
 
-            <div class="col-4" style={titleStyle}>
+            <div className="col-4" style={titleStyle}>
                 Choreganizer!
             </div>
 
-            <div id="greeting" class="col-5">
+            <div id="greeting" className="col-5">
                 Welcome, ...
             </div>
 
