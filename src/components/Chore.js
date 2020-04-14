@@ -38,8 +38,13 @@ const Chore = (props) => {
             <Modal.Title>{name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Task:{description} Assigned to: {user} on {day} and it is{" "}
-            {completed}
+            <div>
+              <h2>{name}</h2>
+              <p>{description}</p>
+              <h5>Assigned to: {user}</h5>
+              <h5>Schedule on: {day}</h5>
+              {completed ? <p>Finished!</p> : <p>Incomplete</p>}
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
