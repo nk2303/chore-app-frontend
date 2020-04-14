@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, Button } from 'react'
 import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
 import Modal from 'react-bootstrap/Modal'
@@ -7,15 +7,13 @@ import Modal from 'react-bootstrap/Modal'
 // Display Chore details: on click, setState to send clicked chore
 
 
-export default class Chore extends Component {
+const Chore = (props) => {
+    
+    const { name, description, location, user, day, icon, completed, showChoreDetail } = props;
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-    render(){
-        const { name, description, location, user, day, icon, completed, showChoreDetail } = this.props
-        const [show, setShow] = useState(false);
-        const handleClose = () => setShow(false);
-        const handleShow = () => setShow(true);
-
-        
         return(
             <Accordion>
                 <Card className='text-center' style={{width: '5rem'}}>
@@ -27,9 +25,12 @@ export default class Chore extends Component {
                     </Accordion.Collapse>
 
 
-                    <Card.Title onClick={() => showChoreDetail(this.props)}>{name}</Card.Title>
+                    <Card.Title onClick={showChoreDetail}>{name}
+                    </Card.Title>
+
                 </Card>
             </Accordion>
         )
     }
-}
+
+export default Chore;
