@@ -15,7 +15,7 @@ export default class NavBar extends React.Component {
         <header id='topbar' class="row">
           <Link />
           <div class="col-3">
-            Made by Diana, Johnny and Kim
+            Made by Diana, Jonny and Kim
                 </div>
           <div class="col-4" style={titleStyle}>
             Choreganizer!

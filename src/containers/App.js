@@ -43,14 +43,18 @@ class App extends React.Component {
     this.setState({ authUser: {}, });
   };
 
+  returningUser = data => {
+    this.setState({ authUser: data.user})
+  }
+
   render() {
       return (
         <div style={this.sectionStyle}>
           <Router>
             <NavBar/>
-            <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} />}/>
-            <Route exact path='/account' render={()=><Account />}/>
-            <Route exact path='/house' render={()=><HouseContainer/>}/>
+            <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
+            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} />}/>
           </Router>
     
         </div>
