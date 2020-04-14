@@ -20,8 +20,11 @@ export default class NavBar extends React.Component {
           <div class="col-4" style={titleStyle}>
             Choreganizer!
                 </div>
-          <div id="greeting" class="col-4">
-            Welcome, ...
+                <div id="greeting" class="col-4">
+                    Welcome, ...
+                </div>
+                <div class="input-group-append">
+                    <button id="" class="btn btn-outline-secondary" type="input">Account</button>
                 </div>
           <div class="input-group-append">
             <button id="login" class="btn btn-outline-secondary" type="input">Profile</button>

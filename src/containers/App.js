@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 import Landing from './Landing';
 import Account from './Account';
 import HouseContainer from './HouseContainer';
-import background from '../assets/chalkboardbackground.jpg';
+import background from '../assets/recycling-texture.JPG';
 
 
 class App extends React.Component {

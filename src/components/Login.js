@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form'
 import { api } from '../services/api';
+import '../App.css';
 
 // Login page. Poor bootstrap styling..
 
@@ -27,6 +29,7 @@ handlePasswordChange = event => {
   })
 }
 
+
 handleSubmit = event => {
   event.preventDefault()
   const user = {user: 
@@ -52,33 +55,41 @@ handleSubmit = event => {
 };
 
 
+//<Form.Label> is <label>
+//<Form.Control> is <input>
+//<Form.Group> is <row>
+//<Form> is <form>
 render() {
   return (
     <div>
     <Container>
-        Login
-        
-      <form onSubmit={event => this.handleSubmit(event)}>
-        <Row>
-        Username:<input
-          type="text"
-          label="username"
-          onChange={event => this.handleUsernameChange(event)}
-          value={this.state.username}
-        />
-        </Row>
-        <Row>
-        Password:<input
-          type="password"
-          onChange={event => this.handlePasswordChange(event)}
-          value={this.state.password}
-        />
-        </Row>
-        <Row>
-        <input type="submit"/>
-        </Row>
-      </form>
-        
+        <Form.Label>Have an account?</Form.Label>
+        <br/>
+        <br/>
+        <Form onSubmit={event => this.handleSubmit(event)}>
+          <Form.Group controlId="validationCustomUsername">
+          {/* <Form.Label>Username</Form.Label> */}
+            <Form.Control
+              type="text"
+              label="username"
+              placeholder="Username"
+              onChange={event => this.handleUsernameChange(event)}
+              value={this.state.username}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+          {/* <Form.Label>Password</Form.Label> */}
+          <Form.Control 
+            type="password"
+            placeholder="Password"
+            onChange={event => this.handlePasswordChange(event)}
+            value={this.state.password}
+          />
+          </Form.Group>
+          <Button variant="secondary" type="submit" className="text-align-center" >
+            Log in 
+          </Button>
+      </Form>
     </Container>
     </div>
   )

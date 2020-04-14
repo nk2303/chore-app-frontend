@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form'
 import { api } from '../services/api';
+import '../App.css';
 
 // Signup page, styling copied from Login page
 
@@ -62,72 +64,83 @@ export default class Signup extends Component {
     }  
   };
 
-
+//<Form.Label> is <label>
+//<Form.Control> is <input>
+//<Form.Group> is <row>
+//<Form> is <form>
 render() {
     return (
     <div>
     <Container>
-        Signup
-        
-      <form onSubmit={event => this.handleSubmit(event)}>
-        <Row>
-        <label name='username'>Username:</label>
-        <input
-          type="text"
-          name="username"
-          onChange={event => this.handleChange(event)}
-          value={this.state.fields.username}
-        />
-        </Row>
-        <Row>
-        <label name='first_name'>First Name:</label>
-        <input
+      <Form.Label>Don't have an account?</Form.Label>
+      <br/>
+      <br/>
+      <Form onSubmit={event => this.handleSubmit(event)}>
+        <Form.Group controlId="validationCustomUsername">
+          <Form.Control
+            type="text"
+            name="username"
+            placeholder="Username"
+            onChange={event => this.handleChange(event)}
+            value={this.state.fields.username}
+          />
+          </Form.Group>
+        <Form.Group>
+        {/* <Form.Label>First Name:</Form.Label> */}
+        <Form.Control
           type="text"
           name="first_name"
+          placeholder="First name"
           onChange={event => this.handleChange(event)}
           value={this.state.fields.first_name}
         />
-        </Row>
-        <Row>
-        <label name='last_name'>Last Name:</label>
-        <input
+        </Form.Group>
+        <Form.Group>
+        {/* <Form.Label>Last Name:</Form.Label> */}
+        <Form.Control
           type="text"
           name="last_name"
+          placeholder="Last name"
           onChange={event => this.handleChange(event)}
           value={this.state.fields.last_name}
         />
-        </Row>
-        <Row>
-        <label name='email'>Email Address:</label>
-        <input
+        </Form.Group>
+        <Form.Group controlId="formBasicEmail">
+        {/* <Form.Label>Email address</Form.Label> */}
+        <Form.Control
           type="text"
           name="email"
+          placeholder="Enter email"
           onChange={event => this.handleChange(event)}
           value={this.state.fields.email}
         />
-        </Row>
-        <Row>
-        <label name='password'>Password:</label>
-        <input
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+        {/* <Form.Label>Password</Form.Label> */}
+        <Form.Control 
           type="password"
           name="password"
+          placeholder="Password"
           onChange={event => this.handleChange(event)}
           value={this.state.fields.password}
         />
-        </Row>
-        <Row>
-        <label name='password_confirmation'>Confirm Password:</label>
-        <input
+        </Form.Group>
+        <Form.Group>
+        {/* <Form.Label>Confirm Password:</Form.Label> */}
+        <Form.Control
           type="password"
           name="password_confirmation"
+          placeholder="Confirm password"
           onChange={event => this.handleChange(event)}
           value={this.state.fields.password_confirmation}
         />
-        </Row>
-        <Row>
-        <input type="submit"/>
-        </Row>
-      </form>
+        </Form.Group>
+        <Form.Group>
+        <Button variant="secondary" type="submit">
+            Create account
+        </Button>
+        </Form.Group>
+      </Form>
         
     </Container>
     </div>

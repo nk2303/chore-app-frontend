@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import paperBackground from '../assets/recyclepaper.jpg'
+import paperBackground from '../assets/recycling-texture.JPG'
+
 
 
 export default class UserChoreContainer extends Component {
