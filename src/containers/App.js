@@ -20,6 +20,9 @@ class App extends React.Component {
     super();
     this.state = {
       authUser: {},
+      location: {},
+      users: [],
+      chores: [],
     };
   }
 
@@ -47,6 +50,15 @@ class App extends React.Component {
     this.setState({ authUser: data.user})
   }
 
+  updateState = data => {
+    const {name, id, creator, users, chores} = data.location;
+    this.setState({
+      location: {name, id, creator},
+      users, 
+      chores
+    })
+  }
+
   render() {
       return (
         <div style={this.sectionStyle}>
@@ -54,7 +66,7 @@ class App extends React.Component {
             <NavBar/>
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
             <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} updateState={this.updateState} />}/>
           </Router>
     
         </div>
