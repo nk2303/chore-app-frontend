@@ -17,6 +17,10 @@ export default class HouseContainer extends Component {
         api.auth.getCurrentUser().then(data => {
           if (data.error || this.props.authUser.id !== data.user.id) {
             this.props.history.push("/");
+          } else {
+            api.location.getLocation(this.props.authUser.location_id).then(data => {
+              this.props.updateState(data)
+            })
           }
         });
       }
