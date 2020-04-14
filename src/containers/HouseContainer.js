@@ -28,8 +28,8 @@ export default class HouseContainer extends Component {
             <div id='sideBar' class="container-fluid row">
                 <sidebar class='left-side-menu col-2'>
                     <UserChoreContainer/>
+                    <UnassignedChoresContainer/>
                 </sidebar>
-                {/* <UnassignedChoresContainer/> */}
                 <main id="mainbar" class="col-10">
                     <Schedule/>
                     <CommentContainer/>

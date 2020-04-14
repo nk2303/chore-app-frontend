@@ -9,6 +9,9 @@ import HouseContainer from './HouseContainer';
 import background from '../assets/recycling-texture.JPG';
 
 
+// authUser gets looked up in database
+// chores.filter(user == authUser).map((chore) => chore.day? send to Schedule : UserChores)
+
 class App extends React.Component {
    sectionStyle = {
     backgroundImage: `url(${background})`,

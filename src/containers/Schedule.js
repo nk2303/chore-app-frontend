@@ -13,6 +13,25 @@ const Chore = () => {
   );
 };
 
+const buildSchedule = (props) => {
+  props.users.map(user => renderUserRows(user))
+}
+// house.users.map(user => renderUserRows(user))
+const renderUserRows = (user) => {
+  return(
+    <tr>
+      <td>{user.first_name}</td>
+      <td value="monday"></td>
+      <td value="tuesday"></td>
+      <td value="wednesday"></td>
+      <td value="thursday"></td>
+      <td value="friday"></td>
+      <td value="saturday"></td>
+      <td value="sunday"></td>
+    </tr>
+  )
+}
+
 //props will be passed down and we can use its information
 const Schedule = (props) => {
         const transBG = {
@@ -34,9 +53,21 @@ const Schedule = (props) => {
                     </tr>
                 </thead>
                 {/* And below is rendering */}
+                {/* render rows based on users in house */}
+                {/* each user row renders 5 <td>s with value equal to each day */}
+                {/* chores are checked for user and assigned day and are rendered on correspondings <td> */}
                 <tbody class="chalk-font">
                     <tr>
-                        <td>JONNY</td>
+                    <tr>
+      <td>Jonny</td>
+      <td value="monday"></td>
+      <td value="tuesday"></td>
+      <td value="wednesday"></td>
+      <td value="thursday"></td>
+      <td value="friday"></td>
+      <td value="saturday"></td>
+      <td value="sunday"></td>
+    </tr>
                     </tr>
                     <tr>
                         <td>KIM</td>
