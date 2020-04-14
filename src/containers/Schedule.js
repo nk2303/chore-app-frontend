@@ -21,7 +21,6 @@ const Schedule = (props) => {
         };
         return(
             <div>
-            Schedule Container
             <Table striped bordered hover variant="dark" >
                 <thead class="chalk-font text-align-center" style={transBG}>
                     <tr>
