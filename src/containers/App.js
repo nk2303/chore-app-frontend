@@ -5,10 +5,16 @@ import NavBar from './NavBar'
 import Landing from './Landing'
 import Account from './Account'
 import HouseContainer from './HouseContainer'
+import background from '../assets/chalkboardbackground.jpg';
 
-// Routing between login (new user), account(user without a house) and house pages(user already belonging to a house)
 
 class App extends React.Component {
+   sectionStyle = {
+    backgroundImage: `url(${background})`,
+    'min-height': '800px',
+    'background-size':'cover'
+  };
+
   constructor() {
     super();
     this.state = {
@@ -16,30 +22,16 @@ class App extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   const token = localStorage.getItem("token");
-  //   console.log(token)
-  //   if (token) {
-  //     // console.log('there is a token');
-  //     // make a request to the backend and find our user
-  //     api.auth.getCurrentUser().then(user => {
-  //       // console.log(user)
-  //       const updatedState = { ...this.state.auth, user: user };
-  //       this.setState({ auth: updatedState });
-  //     });
-  //   }
-  // }
-
   login = data => {
     // const updatedState = { ...this.state.auth, user: {data.user} };
     localStorage.setItem("token", data.jwt);
     this.setState({ authUser: data.user });
   };
 
-
+  
   render() {
       return (
-        <div>
+        <div style={this.sectionStyle}>
           <Router>
             <NavBar/>
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} />}/>
