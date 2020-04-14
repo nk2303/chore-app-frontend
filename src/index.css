@@ -17,7 +17,7 @@ code {
 }
 
 #topbar {
-  color: white;
+  color: black;
   font-size: 14px;
   text-align: right;
   margin: 8px;
@@ -25,6 +25,7 @@ code {
   /* vertical-align: middle */
 }
 
-.text-align-center {
-  text-align: center;
+
+.opacity-60 {
+  opacity: 0.6;
 }

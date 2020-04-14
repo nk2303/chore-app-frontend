@@ -7,7 +7,7 @@ export default class CommentContainer extends Component {
     render(){
         return(
             <div>
-                Comments Here
+                Comments
             </div>
         )
     }
