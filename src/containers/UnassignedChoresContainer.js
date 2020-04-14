@@ -7,9 +7,9 @@ const chore = [{
     description: "Sweep floors upstairs and in the kitchen.",
     location: "3102 E Cherry St.",
     user: "Jonny",
-    day: "",
+    day: "Thursday",
     icon: broom,
-    completed: false
+    completed: true
 }]
 
 export default class UnassignedChoresContainer extends Component {
@@ -19,7 +19,7 @@ export default class UnassignedChoresContainer extends Component {
 
     displayChores = (chores) => {
         return chores.map(chore => {
-            return <Chore name={chore.name} description={chore.description} location={chore.location} user={chore.user} day={chore.day} icon={chore.icon} completed={chore.completed}/>
+            return <Chore showChoreDetail={this.props.showChoreDetail} name={chore.name} description={chore.description} location={chore.location} user={chore.user} day={chore.day} icon={chore.icon} completed={chore.completed}/>
         })
     }
 

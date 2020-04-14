@@ -15,9 +15,9 @@ export default class HouseContainer extends Component {
     render(){
         return(
             <div>
-                <UserChoreContainer/>
-                <UnassignedChoresContainer/>
-                <Schedule/>
+                <UserChoreContainer showChoreDetail={this.props.showChoreDetail}/>
+                <UnassignedChoresContainer showChoreDetail={this.props.showChoreDetail}/>
+                <Schedule showChoreDetail={this.props.showChoreDetail}/>
                 <CommentContainer/>
             </div>
         )

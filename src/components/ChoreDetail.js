@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 const ChoreDetail = props => {
 
-    let { name, description, name, description, location, user, day, icon, completed } = this.props
+    let { name, description, user, day, icon, completed } = props.chore
 
     return(
         <div>
