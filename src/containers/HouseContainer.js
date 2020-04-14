@@ -10,15 +10,17 @@ export default class HouseContainer extends Component {
 
     // Unassigned chores shrinks as unassigned chores are assigned / "No Chores to Assign!"
 
-    
-
     render(){
         return(
-            <div>
-                <UserChoreContainer/>
-                <UnassignedChoresContainer/>
-                <Schedule/>
-                <CommentContainer/>
+            <div id='sideBar' class="container-fluid row">
+                <sidebar class='left-side-menu col-2'>
+                    <UserChoreContainer/>
+                </sidebar>
+                {/* <UnassignedChoresContainer/> */}
+                <main id="mainbar" class="col-10">
+                    <Schedule/>
+                    <CommentContainer/>
+                </main>
             </div>
         )
     }

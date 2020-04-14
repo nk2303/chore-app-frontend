@@ -8,7 +8,7 @@ export default class UnassignedChoresContainer extends Component {
     render(){
         return(
             <div>
-                All  Container
+                All Container
             </div>
         )
     }
