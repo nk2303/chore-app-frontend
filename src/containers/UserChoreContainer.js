@@ -10,7 +10,7 @@ export default class UserChoreContainer extends Component {
     render(){
         var backgroundImg = {
             backgroundImage: `url(${paperBackground})`,
-            'background-size':'cover'
+            backgroundSize:'cover'
           };
         return(
             <div style={backgroundImg}>

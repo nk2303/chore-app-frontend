@@ -28,12 +28,12 @@ export default class HouseContainer extends Component {
 
     render(){
         return(
-            <div id='sideBar' class="container-fluid row">
-                <sidebar class='left-side-menu col-2'>
+            <div id='sideBar' className="container-fluid row">
+                <div className='left-side-menu col-2'>
                     <UserChoreContainer/>
-                </sidebar>
+                </div>
                 {/* <UnassignedChoresContainer/> */}
-                <main id="mainbar" class="col-10">
+                <main id="mainbar" className="col-10">
                     <Schedule/>
                     <CommentContainer/>
                 </main>
