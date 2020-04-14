@@ -26,19 +26,16 @@ const newUser = data => {
   }).then(resp => resp.json());
 };
 
-// const getCurrentUser = () => {
-//   // console.log("getting current user", headers);
-//   return fetch(`${API_ROOT}/current_user`, {
-//     headers: headers()
-//   }).then(res => {
-//     // console.log(res)
-//     return res.json();
-//   });
-// };
+const getCurrentUser = () => {
+  return fetch(`${API_ROOT}/current_user`, {
+    headers: headers()
+  }).then(resp => resp.json());
+};
 
 export const api = {
   auth: {
     login,
+    getCurrentUser,
   },
   user: {
     newUser,
