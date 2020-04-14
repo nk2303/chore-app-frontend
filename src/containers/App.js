@@ -1,15 +1,21 @@
 import React from 'react';
 import '../App.css';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { api } from '../services/api';
 import NavBar from './NavBar';
 import Landing from './Landing';
 import Account from './Account';
 import HouseContainer from './HouseContainer';
-import { api } from '../services/api';
+import background from '../assets/chalkboardbackground.jpg';
 
-// Routing between login (new user), account(user without a house) and house pages(user already belonging to a house)
 
 class App extends React.Component {
+   sectionStyle = {
+    backgroundImage: `url(${background})`,
+    'min-height': '800px',
+    'background-size':'cover'
+  };
+
   constructor() {
     super();
     this.state = {
@@ -37,12 +43,9 @@ class App extends React.Component {
     this.setState({ authUser: {}, });
   };
 
-  
-
-
   render() {
       return (
-        <div>
+        <div style={this.sectionStyle}>
           <Router>
             <NavBar/>
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} />}/>
