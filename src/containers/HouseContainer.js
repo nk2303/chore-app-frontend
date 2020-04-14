@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserChoreContainer from './UserChoreContainer'
-import UnassignedChoresContainer from './ChoresContainer'
+import UnassignedChoresContainer from './UnassignedChoresContainer'
 import Schedule from './Schedule'
 import CommentContainer from './CommentContainer'
 
@@ -15,9 +15,9 @@ export default class HouseContainer extends Component {
     render(){
         return(
             <div>
-                <UserChoreContainer/>
-                <UnassignedChoresContainer/>
-                <Schedule/>
+                <UserChoreContainer showChoreDetail={this.props.showChoreDetail}/>
+                <UnassignedChoresContainer showChoreDetail={this.props.showChoreDetail}/>
+                <Schedule showChoreDetail={this.props.showChoreDetail}/>
                 <CommentContainer/>
             </div>
         )
