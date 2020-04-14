@@ -24,7 +24,7 @@ export default class NavBar extends React.Component {
                     Welcome, ...
                 </div>
                 <div class="input-group-append">
-                    <button id="login" class="btn btn-outline-secondary" type="input">Profile</button>
+                    <button id="" class="btn btn-outline-secondary" type="input">Account</button>
                 </div>
 
             </header>
