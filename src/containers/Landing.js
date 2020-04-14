@@ -4,14 +4,14 @@ import Signup from '../components/Signup';
 
 export default class Landing extends Component {
 
-    // Container to login, signup, and info about app
+  // Container to login, signup, and info about app
 
-    render(){
-        return(
-            <div>
-                <Login onLogin={this.props.onLogin} history={this.props.history} />
-                {/* <Signup /> */}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Login onLogin={this.props.onLogin} history={this.props.history} />
+        <Signup onSignin={this.props.onLogin} history={this.props.history} />
+      </div>
+    )
+  }
 }

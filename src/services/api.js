@@ -15,7 +15,15 @@ const login = data => {
     method: "POST",
     headers: headers(),
     body: JSON.stringify(data)
-  }).then(res => res.json());
+  }).then(resp => resp.json());
+};
+
+const newUser = data => {
+  return fetch(`${API_ROOT}/users`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(data)
+  }).then(resp => resp.json());
 };
 
 // const getCurrentUser = () => {
@@ -32,4 +40,7 @@ export const api = {
   auth: {
     login,
   },
+  user: {
+    newUser,
+  }
 };
