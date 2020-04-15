@@ -25,8 +25,9 @@ export default class HouseContainer extends Component {
             api.location
               .getLocation(this.props.authUser.location_id)
               .then((data) => {
-                this.props.setLocationInfo(data);
+                this.props.setLocationInfo(data); //passing back to function we got from App
               });
+              
           }
         }
       });
@@ -47,7 +48,7 @@ export default class HouseContainer extends Component {
               <br />
               <UnassignedChoresContainer />
               <br />
-              <CreateChore />
+              {(this.props.isAdmin)? <CreateChore /> : null}
             </div>
             <main id="mainbar" className="col-10">
               <Schedule users={this.props.users} />
