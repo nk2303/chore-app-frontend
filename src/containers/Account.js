@@ -27,7 +27,7 @@ export default class Account extends Component {
         <div className='left-side-menu col-2'>
           <Button href="/house" variant="outline-secondary" block>See my chore this week</Button>
           <br/><br/>
-          {<CreateHouse history={this.props.history} authUser={this.props.authUser}/>}
+          {<CreateHouse history={this.props.history} authUser={this.props.authUser} onAddHouse={this.props.onAddHouse} />}
         </div>
 
         <main id="mainbar" className="col-10">
