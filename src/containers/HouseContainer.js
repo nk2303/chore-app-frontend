@@ -3,7 +3,9 @@ import UserChoreContainer from './UserChoreContainer'
 import UnassignedChoresContainer from './UnassignedChoresContainer'
 import Schedule from './Schedule'
 import CommentContainer from './CommentContainer'
+import CreateChore from '../components/CreateChore'
 import { api } from '../services/api'
+
 
 export default class HouseContainer extends Component {
 
@@ -33,7 +35,10 @@ export default class HouseContainer extends Component {
         <div id='sideBar' className="container-fluid row">
           <div className='left-side-menu col-2'>
             <UserChoreContainer />
+            <br/>
             <UnassignedChoresContainer/>
+            <br/>
+            <CreateChore/>
           </div>
           <main id="mainbar" className="col-10">
             <Schedule />

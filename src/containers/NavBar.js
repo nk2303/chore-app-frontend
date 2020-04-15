@@ -2,7 +2,6 @@ import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from 'react-router-dom';
 
-
 // Account, House, Contact, About, Logout
 
 export default class NavBar extends React.Component {
