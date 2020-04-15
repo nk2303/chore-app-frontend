@@ -41,10 +41,10 @@ export default class NavBar extends React.Component {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </div> : null}
+          </div> : <div className="col-1" ></div>}
           <div className="col-2">
             Made by Diana, Jonny and Kim
-            </div>
+          </div>
 
           <div className="col-4" style={titleStyle}>
             Choreganizer!

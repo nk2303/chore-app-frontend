@@ -45,6 +45,8 @@ const Schedule = (props) => {
     );
   };
 
+  // find <td> by ID and insert chore?
+
   const renderAssignedChores = (chores) => {
     chores.map((chore) => (chore.day ? console.log(chore) : null));
   };

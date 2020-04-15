@@ -3,6 +3,7 @@ import UserChoreContainer from "./UserChoreContainer";
 import UnassignedChoresContainer from "./UnassignedChoresContainer";
 import Schedule from "./Schedule";
 import CommentContainer from "./CommentContainer";
+import AssignChore from "../components/AssignChore"
 import CreateChore from "../components/CreateChore";
 import { api } from "../services/api";
 
@@ -47,10 +48,16 @@ export default class HouseContainer extends Component {
               <br />
               <UnassignedChoresContainer />
               <br />
-              <CreateChore />
+              {(this.props.isAdmin) ?
+                (<div>
+                  <CreateChore/><br/>
+                  <AssignChore/>
+                </div>)
+                :
+                null }
             </div>
             <main id="mainbar" className="col-10">
-              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser}/>
+              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} />
               <CommentContainer />
             </main>
           </div>

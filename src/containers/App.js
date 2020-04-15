@@ -26,7 +26,15 @@ class App extends React.Component {
       location: {},
       users: [],
       chores: [],
+      isAdmin: false
     };
+  }
+
+  isAdmin() {
+    (this.state.location.creator === this.state.authUser.id) ? 
+    ( this.setState({isAdmin: true}) )
+    :
+    ( this.setState({isAdmin: false}) )
   }
 
   componentDidMount() {
@@ -57,9 +65,10 @@ class App extends React.Component {
     const {name, id, creator, users, chores} = data.location;
     this.setState({
       location: {name, id, creator},
-      users, 
-      chores
+      users, //array of objs
+      chores //array of objs
     })
+    this.isAdmin()
   }
 
   addHouse = data => {
@@ -76,8 +85,8 @@ class App extends React.Component {
           <Router>
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
-            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} />}/>
+            <Route exact path='/account' render={(props)=><Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} />}/>
           </Router>
     
         </div>
