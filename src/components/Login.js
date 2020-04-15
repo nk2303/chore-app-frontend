@@ -86,7 +86,7 @@ render() {
             value={this.state.password}
           />
           </Form.Group>
-          <Button variant="secondary" type="submit" className="text-align-center" >
+          <Button variant="secondary" type="submit" block>
             Log in 
           </Button>
       </Form>
