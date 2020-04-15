@@ -1,26 +1,46 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-import Chore from "../components/Chore"
+import Chore from "../components/Chore";
 
 const Schedule = (props) => {
-  const { authUser, chores, location, users } = props;
+  const { authUser, chores, users } = props;
+  const week = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+
+  const userChores = (user) => {
+    return chores.filter((chore) => {
+    return chore.user_id === user.id;
+  })};
+
+
+  const findChoreByDay = (day, user) => {
+    return userChores(user).filter((chore) => chore.day === day);
+  };
+
+  const buildChore = (chore) => {
+    return <Chore chore={chore} />;
+  };
+
+  const buildTD = (day, user) => {
+    let dayChores = findChoreByDay(day, user);
+    return (
+      <td value={day}>
+        {dayChores.length > 0
+          ? dayChores.map((chore) => buildChore(chore))
+          : null}
+      </td>
+    );
+  };
 
   const buildSchedule = (users) => {
-    return users.map((user) => renderUserRows(user, chores));
+    return users.map((user) => renderUserRows(user));
   };
+
   const renderUserRows = (user) => {
     return (
       <tr>
-        <td id={user}>{user.first_name}</td>
-        <td value="MON"></td>
-        <td value="TUE"></td>
-        <td value="WED"></td>
-        <td value="THU"></td>
-        <td value="FRI"></td>
-        <td value="SAT"></td>
-        <td value="SUN"></td>
-        {/* made a td with ${user.id + chore.day} id if it does not exist */}
+        <td>{user.first_name}</td>
+        {week.map((day) => buildTD(day, user))}
       </tr>
     );
   };

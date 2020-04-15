@@ -50,7 +50,7 @@ export default class HouseContainer extends Component {
               <CreateChore />
             </div>
             <main id="mainbar" className="col-10">
-              <Schedule users={this.props.users} />
+              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser}/>
               <CommentContainer />
             </main>
           </div>
