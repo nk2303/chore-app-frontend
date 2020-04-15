@@ -26,9 +26,8 @@ export default class HouseContainer extends Component {
             api.location
               .getLocation(this.props.authUser.location_id)
               .then((data) => {
-                this.props.setLocationInfo(data); //passing back to function we got from App
+                this.props.setLocationInfo(data);
               });
-              
           }
         }
       });
@@ -58,7 +57,7 @@ export default class HouseContainer extends Component {
                 null }
             </div>
             <main id="mainbar" className="col-10">
-              <Schedule users={this.props.users} />
+              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} />
               <CommentContainer />
             </main>
           </div>
