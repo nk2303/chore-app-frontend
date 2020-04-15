@@ -1,12 +1,10 @@
-import React, { useState, Fragment } from "react";
-import { Button, Modal, Card, Accordion } from "react-bootstrap";
+import React, { Component, useState } from "react";
+
+import { Modal, Accordion, Card, Button } from "react-bootstrap";
 
 // Display Chore details: on click, setState to send clicked chore
 
 const Chore = (props) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const {
     name,
     description,
@@ -17,6 +15,9 @@ const Chore = (props) => {
     completed,
     showChoreDetail,
   } = props;
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <Accordion>
@@ -39,22 +40,14 @@ const Chore = (props) => {
           </Modal.Header>
           <Modal.Body>
             <div>
-              <h2>{name}</h2>
               <p>{description}</p>
               <h5>Assigned to: {user}</h5>
               <h5>Schedule on: {day}</h5>
               {completed ? <p>Finished!</p> : <p>Incomplete</p>}
             </div>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
         </Modal>
+
       </Card>
     </Accordion>
   );

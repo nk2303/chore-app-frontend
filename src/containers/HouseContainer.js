@@ -38,7 +38,7 @@ export default class HouseContainer extends Component {
           </sidebar>
           {/* <UnassignedChoresContainer/> */}
           <main id="mainbar" class="col-10">
-            <Schedule />
+            <Schedule users={this.props.users}/>
             <CommentContainer />
           </main>
         </div> : <h1>Join or Create a household on your account page!</h1>

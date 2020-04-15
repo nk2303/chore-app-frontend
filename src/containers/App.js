@@ -9,6 +9,9 @@ import HouseContainer from './HouseContainer';
 import background from '../assets/recycling-texture.JPG';
 
 
+// authUser gets looked up in database
+// chores.filter(user == authUser).map((chore) => chore.day? send to Schedule : UserChores)
+
 class App extends React.Component {
    sectionStyle = {
     backgroundImage: `url(${background})`,
@@ -66,7 +69,7 @@ class App extends React.Component {
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
             <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} updateState={this.updateState} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} users={this.state.users} chores={this.state.chores} authUser={this.state.authUser} updateState={this.updateState} />}/>
           </Router>
     
         </div>
