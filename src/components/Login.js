@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { api } from '../services/api';
 import '../App.css';
@@ -54,11 +54,6 @@ handleSubmit = event => {
   });
 };
 
-
-//<Form.Label> is <label>
-//<Form.Control> is <input>
-//<Form.Group> is <row>
-//<Form> is <form>
 render() {
   return (
     <div>
@@ -67,8 +62,7 @@ render() {
         <br/>
         <br/>
         <Form onSubmit={event => this.handleSubmit(event)}>
-          <Form.Group controlId="validationCustomUsername">
-          {/* <Form.Label>Username</Form.Label> */}
+          <Form.Group>
             <Form.Control
               type="text"
               label="username"
@@ -77,8 +71,7 @@ render() {
               value={this.state.username}
             />
           </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-          {/* <Form.Label>Password</Form.Label> */}
+          <Form.Group>
           <Form.Control 
             type="password"
             placeholder="Password"

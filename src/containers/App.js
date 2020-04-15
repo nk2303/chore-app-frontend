@@ -28,7 +28,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
-    console.log(token)
     if (token) {
       api.auth.getCurrentUser().then(user => {
         this.setState({ authUser: user.user });
@@ -51,6 +50,7 @@ class App extends React.Component {
   }
 
   updateState = data => {
+    console.log(data);
     const {name, id, creator, users, chores} = data.location;
     this.setState({
       location: {name, id, creator},

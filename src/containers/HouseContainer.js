@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserChoreContainer from './UserChoreContainer'
-import UnassignedChoresContainer from './ChoresContainer'
+import UnassignedChoresContainer from './UnassignedChoresContainer'
 import Schedule from './Schedule'
 import CommentContainer from './CommentContainer'
 import { api } from '../services/api'
@@ -31,8 +31,9 @@ export default class HouseContainer extends Component {
             <div id='sideBar' className="container-fluid row">
                 <div className='left-side-menu col-2'>
                     <UserChoreContainer/>
+                    <UnassignedChoresContainer/>
                 </div>
-                {/* <UnassignedChoresContainer/> */}
+                
                 <main id="mainbar" className="col-10">
                     <Schedule/>
                     <CommentContainer/>

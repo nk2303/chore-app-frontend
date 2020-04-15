@@ -1,32 +1,17 @@
-import React, { Component } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import React from 'react';
 import Table from 'react-bootstrap/Table'
 
-const users = [
-    {
-        id: 1,
-        name: "Jonny"
-    },
-    {
-        id: 2,
-        name: "Kim"
-    },
-    {
-        id: 3,
-        name: "Diana"
-    }
-]
 
 // Messing around with trying to create a grid and make chore cards...not successful.
 
-const Chore = () => {
-    return(
-        <Card style={{ width: '5rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Title>Chore Title</Card.Title>
-                </Card>
-    )
-}
+// const Chore = () => {
+//     return(
+//         <Card style={{ width: '5rem' }}>
+//                 <Card.Img variant="top" src="holder.js/100px180" />
+//                 <Card.Title>Chore Title</Card.Title>
+//                 </Card>
+//     )
+// }
 
 //props will be passed down and we can use its information
 const Schedule = (props) => {
@@ -52,7 +37,7 @@ const Schedule = (props) => {
             </thead>
             {/* And below is rendering */}
             <tbody className="chalk-font">
-                {users.map((user, id) => <tr key={user.id}><td>{user.name}</td></tr>)}
+                {/* {users.map((user, id) => <tr key={user.id}><td>{user.name}</td></tr>)} */}
             </tbody>
             </Table>
         </div>

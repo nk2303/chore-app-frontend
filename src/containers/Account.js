@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { api } from '../services/api';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import CreateHouse from '../components/CreateHouse';
+import EditUser from '../components/EditUser'
 
-const user = {
-  username: 'kim2',
-  first_name: 'Kim',
-  last_name: 'Khong',
-  email: 'kim@gmail.com'
-}
 
 export default class Account extends Component {
 
   // Container to display a new users options to create new house, or join a house
 
-  state = {
-      data: {}
-  }
 
   componentDidMount() {
     if (!localStorage.getItem("token")) {
@@ -31,23 +24,27 @@ export default class Account extends Component {
 
   render() {
     return (
-      <div id='sideBar' class="container-fluid row">
-        <sidebar class='left-side-menu col-2'>
+      <div id='sideBar' className="container-fluid row">
+        <div className='left-side-menu col-2'>
           <Button href="#" variant="outline-secondary" block>See my chore this week</Button>
           <br/><br/>
-          <Button variant="outline-secondary" block>Create new household</Button>
-        </sidebar>
+          {<CreateHouse history={this.props.history} authUser={this.props.authUser}/>}
+        </div>
 
-        <main id="mainbar" class="col-10">
+        <main id="mainbar" className="col-10">
             <div>
               <h5>Your account info: </h5>
-              Your username: {this.state.data.username} <br/>
-              Your name: <br/>
-              Your email: <br/>
-              Your house: <br/>
-              Your admin: <br/>
-              Your housemates: <br/>
+              Your username: {this.props.authUser.username}<br/>
+              Your name: {this.props.authUser.first_name} {this.props.authUser.last_name} <br/>
+              Your email: {this.props.authUser.email}<br/>
+              Your house: {this.props.authUser.location_id? 'House here' : 'You currently belongs to no house.'}<br/>
+              {/* Your admin: {}<br/>
+              Your housemates: {} <br/> */}
             </div>
+              <br/>
+            <div>
+                {/* <EditUser userInfo={this.props.authUser}/> */}
+            </div> 
         </main>
         
       </div>
