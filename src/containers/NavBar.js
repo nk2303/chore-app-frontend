@@ -54,7 +54,8 @@ export default class NavBar extends React.Component {
             Welcome {this.props.authUser.first_name}!
             </div> : null}
 
-      </header>
-    </div>
-  )
+        </header>
+      </div>
+    )
+  }
 }

@@ -49,13 +49,20 @@ class App extends React.Component {
     this.setState({ authUser: data.user})
   }
 
-  updateState = data => {
+  setLocationInfo = data => {
     console.log("under App", data);
     const {name, id, creator, users, chores} = data.location;
     this.setState({
       location: {name, id, creator},
       users, 
       chores
+    })
+  }
+
+  addHouse = data => {
+    console.log(data.user)
+    this.setState({
+      authUser: data.user
     })
   }
 
@@ -66,8 +73,8 @@ class App extends React.Component {
           <Router>
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
-            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} location={this.state.location} users={this.state.users} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} updateState={this.updateState} />}/>
+            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} setLocationInfo={this.setLocationInfo} />}/>
           </Router>
     
         </div>
