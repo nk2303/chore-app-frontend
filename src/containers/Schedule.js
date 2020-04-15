@@ -2,22 +2,9 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 
-// Messing around with trying to create a grid and make chore cards...not successful.
-
-const Chore = () => {
-  return (
-    <Card style={{ width: "5rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Title>Chore Title</Card.Title>
-    </Card>
-  );
-};
-
-//props will be passed down and we can use its information
 const Schedule = (props) => {
 
   const { authUser, chores, location, users } = props;
-  // house.users.map(user => renderUserRows(user))
 
   const buildSchedule = (users) => {
     return users.map((user) => renderUserRows(user, chores));
@@ -28,13 +15,13 @@ const Schedule = (props) => {
     return (
       <tr>
         <td id={user}>{user.first_name}</td>
-        <td value="MON"><Chore></Chore></td>
-        <td value="TUE"><Chore></Chore></td>
-        <td value="WED"><Chore></Chore></td>
-        <td value="THU"><Chore></Chore></td>
-        <td value="FRI"><Chore></Chore></td>
-        <td value="SAT"><Chore></Chore></td>
-        <td value="SUN"><Chore></Chore></td>
+        <td value="MON"></td>
+        <td value="TUE"></td>
+        <td value="WED"></td>
+        <td value="THU"></td>
+        <td value="FRI"></td>
+        <td value="SAT"></td>
+        <td value="SUN"></td>
     {/* made a td with ${user.id + chore.day} id if it does not exist */}
         
         
