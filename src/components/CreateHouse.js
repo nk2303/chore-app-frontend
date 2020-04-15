@@ -25,8 +25,6 @@ class CreateHouse extends Component {
                 creator: this.props.authUser.id
             }
         }
-
-        console.log("submit new location. Details: ", newLocation);
         api.location.createLocation(newLocation)
         .then(resp => {
             if (!resp.error) {
