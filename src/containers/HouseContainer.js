@@ -34,7 +34,7 @@ export default class HouseContainer extends Component {
     return (<>{this.props.authUser.location_id ?
         <div id='sideBar' class="container-fluid row">
           <sidebar class='left-side-menu col-2'>
-            <UserChoreContainer />
+            <UserChoreContainer chores={this.props.chores} users={this.props.users} authUser={this.props.authUser}/>
           </sidebar>
           {/* <UnassignedChoresContainer/> */}
           <main id="mainbar" class="col-10">

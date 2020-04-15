@@ -8,7 +8,6 @@ const Chore = (props) => {
   const {
     name,
     description,
-    location,
     user,
     day,
     icon,
