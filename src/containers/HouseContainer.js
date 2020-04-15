@@ -11,7 +11,6 @@ export default class HouseContainer extends Component {
   // Unassigned chores shrinks as unassigned chores are assigned / "No Chores to Assign!"
   // landing page after login? Should display the current week schedule, your assigned chores, comments box, full figma main page
 
-<<<<<<< HEAD
   // Unassigned chores shrinks as unassigned chores are assigned / "No Chores to Assign!"
   componentDidMount() {
     if (!localStorage.getItem("token")) {
@@ -25,16 +24,6 @@ export default class HouseContainer extends Component {
             api.location.getLocation(this.props.authUser.location_id).then(data => {
               this.props.updateState(data)
             })
-=======
-    // Unassigned chores shrinks as unassigned chores are assigned / "No Chores to Assign!"
-    componentDidMount() {
-      if (!localStorage.getItem("token")) {
-        this.props.history.push("/");
-      } else {
-        api.auth.getCurrentUser().then(data => {
-          if (data.error || this.props.authUser.id !== data.user.id) {
-            this.props.history.push("/");
->>>>>>> modal
           }
         }
       });
