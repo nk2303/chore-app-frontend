@@ -5,45 +5,55 @@ import Dropdown from 'react-bootstrap/Dropdown'
 
 // Account, House, Contact, About, Logout
 
-export default class NavBar extends React.Component {
-  render() {
-    const titleStyle = {
-      'font-size': '30px',
-      opacity: '0.7',
-      'font-family': 'Chalkduster',
-    };
+export default function NavBar(props) {
+  const loggedIn = () => {
+    return props.authUser.id ? true : false
+  }
+  const titleStyle = {
+    'fontSize': '30px',
+    opacity: '0.7',
+    'fontFamily': 'Chalkduster',
+  };
 
-    return (
-      <div>
-        <header id='topbar' class="row">
-            <div class="col-1">
-                <Dropdown>
-                <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                    Navigate
+  return (
+    <div>
+      <header id='topbar' className="row">
+        {loggedIn() ? <div className="col-1">
+          <Dropdown>
+            <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+              Navigate
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Account</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Your house</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">About</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Log out</Dropdown.Item>
-                </Dropdown.Menu>
-                </Dropdown>
-            </div>
-            <div class="col-2">
-                Made by Diana, Jonny and Kim
+            <Dropdown.Menu>
+              <Dropdown.Item>
+                <Link to='/account'>Account</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to='/house'>Your house</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to='/about'>About</Link>
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => {
+                props.handleLogout();
+              }}><Link to='/'>Logout</Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div> : null}
+        <div className="col-2">
+          Made by Diana, Jonny and Kim
             </div>
 
-            <div class="col-4" style={titleStyle}>
-                Choreganizer!
+        <div className="col-4" style={titleStyle}>
+          Choreganizer!
             </div>
 
-            <div id="greeting" class="col-5">
-                Welcome, ...
-            </div>
+        {loggedIn() ? <div id="greeting" className="col-5">
+          Welcome {props.authUser.first_name}!
+            </div> : null}
 
-        </header>
-      </div>
-    )
-  }
+      </header>
+    </div>
+  )
 }
