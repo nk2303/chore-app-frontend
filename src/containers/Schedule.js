@@ -1,6 +1,20 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table'
 
+const users = [
+    {
+        id: 1,
+        name: "Jonny"
+    },
+    {
+        id: 2,
+        name: "Kim"
+    },
+    {
+        id: 3,
+        name: "Diana"
+    }
+]
 
 // Messing around with trying to create a grid and make chore cards...not successful.
 

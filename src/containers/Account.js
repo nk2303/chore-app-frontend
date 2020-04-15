@@ -4,12 +4,9 @@ import Button from 'react-bootstrap/Button';
 import CreateHouse from '../components/CreateHouse';
 import EditUser from '../components/EditUser'
 
-
 export default class Account extends Component {
 
   // Container to display a new users options to create new house, or join a house
-
-
   componentDidMount() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/");
