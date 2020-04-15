@@ -46,7 +46,6 @@ const Chore = (props) => {
             </div>
           </Modal.Body>
         </Modal>
-
       </Card>
     </Accordion>
   );

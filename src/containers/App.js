@@ -77,7 +77,7 @@ class App extends React.Component {
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
             <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} setLocationInfo={this.setLocationInfo} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} />}/>
           </Router>
     
         </div>

@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
+import Chore from "../components/Chore"
 
 const Schedule = (props) => {
-
   const { authUser, chores, location, users } = props;
 
   const buildSchedule = (users) => {
     return users.map((user) => renderUserRows(user, chores));
   };
   const renderUserRows = (user) => {
- 
-
     return (
       <tr>
         <td id={user}>{user.first_name}</td>
@@ -22,19 +20,16 @@ const Schedule = (props) => {
         <td value="FRI"></td>
         <td value="SAT"></td>
         <td value="SUN"></td>
-    {/* made a td with ${user.id + chore.day} id if it does not exist */}
-        
-        
+        {/* made a td with ${user.id + chore.day} id if it does not exist */}
       </tr>
     );
   };
 
-
   // find <td> by ID and insert chore?
 
   const renderAssignedChores = (chores) => {
-    chores.map(chore => chore.day? console.log(chore) : null)
-  }
+    chores.map((chore) => (chore.day ? console.log(chore) : null));
+  };
 
   const transBG = {
     "background-color": "transparent",
@@ -72,10 +67,10 @@ const Schedule = (props) => {
 
 export default Schedule;
 
-   // let userChores = chores.filter(chore=> chore.user_id == user.id)
-    // let week = []
-    // {userChores.map(chore => chore.day? week.push(<td value={chore.day} id={`${user.id + chore.day}`}><Chore chore={chore}/></td>) : null)}
-    // check chore if user_id == user.id
-    // if yes, check chore.day and find its corresponding <td>
-    // when found, include a <Chore chore=chore>
-    // ${user.id + chore.day}
+// let userChores = chores.filter(chore=> chore.user_id == user.id)
+// let week = []
+// {userChores.map(chore => chore.day? week.push(<td value={chore.day} id={`${user.id + chore.day}`}><Chore chore={chore}/></td>) : null)}
+// check chore if user_id == user.id
+// if yes, check chore.day and find its corresponding <td>
+// when found, include a <Chore chore=chore>
+// ${user.id + chore.day}
