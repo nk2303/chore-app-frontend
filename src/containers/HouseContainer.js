@@ -35,7 +35,7 @@ export default class HouseContainer extends Component {
                     <UnassignedChoresContainer/>
                 </sidebar>
                 <main id="mainbar" class="col-10">
-                    <Schedule/>
+                    <Schedule chores={this.props.chores} users={this.props.users}/>
                     <CommentContainer/>
                 </main>
             </div>
