@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import paperBackground from '../assets/recycling-texture.JPG'
+import paperBackground from '../assets/recycling-texture.JPG';
 
+export default class UnassignedChoresContainer extends Component {
 
-
-export default class UserChoreContainer extends Component {
-
-    // Container to display the users assigned chores
+    // Unassigned chores / descriptions live here
 
     render(){
         var backgroundImg = {
@@ -15,10 +13,11 @@ export default class UserChoreContainer extends Component {
         return(
             <div style={backgroundImg}>
                 <div>
-                    Your Current Chores
+                    Unassigned Chores
                 </div>
 
             </div>
         )
     }
 }
+

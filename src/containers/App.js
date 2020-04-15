@@ -12,8 +12,8 @@ import background from '../assets/recycling-texture.JPG';
 class App extends React.Component {
    sectionStyle = {
     backgroundImage: `url(${background})`,
-    'min-height': '800px',
-    'background-size':'cover'
+    minHeight: '800px',
+    backgroundSize:'cover'
   };
 
   constructor() {
@@ -28,7 +28,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
-    console.log(token)
     if (token) {
       api.auth.getCurrentUser().then(user => {
         this.setState({ authUser: user.user });
@@ -51,6 +50,7 @@ class App extends React.Component {
   }
 
   updateState = data => {
+    console.log("under App", data);
     const {name, id, creator, users, chores} = data.location;
     this.setState({
       location: {name, id, creator},
@@ -60,12 +60,13 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("location in app", this.state.location)
       return (
         <div style={this.sectionStyle}>
           <Router>
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
-            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} />}/>
+            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} location={this.state.location} users={this.state.users} />}/>
             <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} updateState={this.updateState} />}/>
           </Router>
     
