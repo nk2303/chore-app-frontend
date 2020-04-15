@@ -26,9 +26,17 @@ export default class UnassignedChoresContainer extends Component {
     // Unassigned chores / descriptions live here
 
     render(){
+        var backgroundImg = {
+            backgroundImage: `url(${paperBackground})`,
+            backgroundSize:'cover'
+          };
         return(
-            <div>
+            <div style={backgroundImg}>
+                <div>
+                    Unassigned Chores
                 {this.displayChores(chore)}
+                </div>
+
             </div>
         )
     }

@@ -15,8 +15,8 @@ import background from '../assets/recycling-texture.JPG';
 class App extends React.Component {
    sectionStyle = {
     backgroundImage: `url(${background})`,
-    'min-height': '800px',
-    'background-size':'cover'
+    minHeight: '800px',
+    backgroundSize:'cover'
   };
 
   constructor() {
@@ -31,7 +31,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
-    console.log(token)
     if (token) {
       api.auth.getCurrentUser().then(user => {
         this.setState({ authUser: user.user });
@@ -53,7 +52,8 @@ class App extends React.Component {
     this.setState({ authUser: data.user})
   }
 
-  updateState = data => {
+  setLocationInfo = data => {
+    console.log("under App", data);
     const {name, id, creator, users, chores} = data.location;
     this.setState({
       location: {name, id, creator},
@@ -62,14 +62,22 @@ class App extends React.Component {
     })
   }
 
+  addHouse = data => {
+    console.log(data.user)
+    this.setState({
+      authUser: data.user
+    })
+  }
+
   render() {
+    console.log("location in app", this.state.location)
       return (
         <div style={this.sectionStyle}>
           <Router>
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
-            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} users={this.state.users} chores={this.state.chores} authUser={this.state.authUser} updateState={this.updateState} />}/>
+            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} setLocationInfo={this.setLocationInfo} />}/>
           </Router>
     
         </div>

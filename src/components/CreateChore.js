@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { api } from '../services/api';
 
-class CreateHouse extends Component {
+class CreateChore extends Component {
     state = {
         show: false,
         name: ''
@@ -19,33 +19,7 @@ class CreateHouse extends Component {
     }
 
     handleSubmit = () => {
-        const newLocation = {
-            location: {
-                name: this.state.name,
-                creator: this.props.authUser.id
-            }
-        }
-
-        console.log("submit new location. Details: ", newLocation);
-        api.location.createLocation(newLocation)
-        .then(resp => {
-            if (!resp.error) {
-                const userUpdatedLocation = {
-                    user: {
-                        ...this.props.authUser, location_id: resp.location.id
-                    }
-                }
-                api.user.updateUser(userUpdatedLocation)
-                .then(resp => {
-                    this.props.onAddHouse(resp);
-                    this.props.history.push('/house');
-                })
-                
-            } else {
-              this.setState({ error: true });
-              console.log(resp.error)
-            }
-      });
+    
     }
 
     setName = name => {
@@ -56,7 +30,7 @@ class CreateHouse extends Component {
         return (
             <div>
                 <Button variant="outline-secondary" onClick={this.handleShow} block>
-                    Create new house
+                    Add new chore
                 </Button>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -69,14 +43,32 @@ class CreateHouse extends Component {
                                 <Form.Control
                                 type="text"
                                 label="housename"
-                                placeholder="Enter house name"
-                                onChange={event => this.setName(event.target.value)}
-                                value={this.state.name}
+                                placeholder="Enter chore name"
+                                // onChange={event => this.setName(event.target.value)}
+                                // value={this.state.name}
+                                />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control
+                                type="text"
+                                label="description"
+                                placeholder="Chore description"
+                                // onChange={event => this.setName(event.target.value)}
+                                // value={this.state.name}
+                                />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Control
+                                type="text"
+                                label="icon"
+                                placeholder="Chore icon url"
+                                // onChange={event => this.setName(event.target.value)}
+                                // value={this.state.name}
                                 />
                             </Form.Group>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.handleSubmit}>
-                                    Create a house!
+                                    Add new chore!
                                 </Button>
                             </Modal.Footer>
                         </Form>
@@ -88,4 +80,4 @@ class CreateHouse extends Component {
     }
 }
 
-export default CreateHouse
+export default CreateChore

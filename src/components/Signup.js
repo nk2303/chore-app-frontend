@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { api } from '../services/api';
 import '../App.css';
@@ -64,10 +64,6 @@ export default class Signup extends Component {
     }  
   };
 
-//<Form.Label> is <label>
-//<Form.Control> is <input>
-//<Form.Group> is <row>
-//<Form> is <form>
 render() {
     return (
     <div>
@@ -76,7 +72,7 @@ render() {
       <br/>
       <br/>
       <Form onSubmit={event => this.handleSubmit(event)}>
-        <Form.Group controlId="validationCustomUsername">
+        <Form.Group >
           <Form.Control
             type="text"
             name="username"
@@ -105,7 +101,7 @@ render() {
           value={this.state.fields.last_name}
         />
         </Form.Group>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group>
         {/* <Form.Label>Email address</Form.Label> */}
         <Form.Control
           type="text"
@@ -115,7 +111,7 @@ render() {
           value={this.state.fields.email}
         />
         </Form.Group>
-        <Form.Group controlId="formBasicPassword">
+        <Form.Group>
         {/* <Form.Label>Password</Form.Label> */}
         <Form.Control 
           type="password"
@@ -136,7 +132,7 @@ render() {
         />
         </Form.Group>
         <Form.Group>
-        <Button variant="secondary" type="submit">
+        <Button variant="secondary" type="submit" block>
             Create account
         </Button>
         </Form.Group>
