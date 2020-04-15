@@ -63,7 +63,7 @@ class App extends React.Component {
       return (
         <div style={this.sectionStyle}>
           <Router>
-            <NavBar/>
+            <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
             <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} />}/>
             <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} updateState={this.updateState} />}/>
