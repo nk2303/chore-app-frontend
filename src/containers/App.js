@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../App.css';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { api } from '../services/api';
@@ -8,6 +8,9 @@ import Account from './Account';
 import HouseContainer from './HouseContainer';
 import background from '../assets/recycling-texture.JPG';
 
+
+// authUser gets looked up in database
+// chores.filter(user == authUser).map((chore) => chore.day? send to Schedule : UserChores)
 
 class App extends React.Component {
    sectionStyle = {
@@ -23,7 +26,15 @@ class App extends React.Component {
       location: {},
       users: [],
       chores: [],
+      isAdmin: false
     };
+  }
+
+  isAdmin() {
+    (this.state.location.creator === this.state.authUser.id) ? 
+    ( this.setState({isAdmin: true}) )
+    :
+    ( this.setState({isAdmin: false}) )
   }
 
   componentDidMount() {
@@ -54,8 +65,16 @@ class App extends React.Component {
     const {name, id, creator, users, chores} = data.location;
     this.setState({
       location: {name, id, creator},
-      users, 
-      chores
+      users, //array of objs
+      chores //array of objs
+    })
+    this.isAdmin()
+  }
+
+  addHouse = data => {
+    console.log(data.user)
+    this.setState({
+      authUser: data.user
     })
   }
 
@@ -73,8 +92,8 @@ class App extends React.Component {
           <Router>
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
-            <Route exact path='/account' render={(props)=><Account {...props} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} authUser={this.state.authUser} setLocationInfo={this.setLocationInfo} />}/>
+            <Route exact path='/account' render={(props)=><Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} />}/>
           </Router>
     
         </div>
