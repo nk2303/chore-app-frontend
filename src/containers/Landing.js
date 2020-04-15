@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import { api } from '../services/api';
-import background from '../assets/recycling-texture.JPG';
 import Card from 'react-bootstrap/Card'
 
 
