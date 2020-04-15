@@ -37,6 +37,7 @@ class CreateHouse extends Component {
                 }
                 api.user.updateUser(userUpdatedLocation)
                 .then(resp => {
+                    this.props.onAddHouse(resp);
                     this.props.history.push('/house');
                 })
                 

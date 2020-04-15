@@ -22,7 +22,7 @@ export default class HouseContainer extends Component {
         } else {
           if (this.props.authUser.location_id) {
             api.location.getLocation(this.props.authUser.location_id).then(data => {
-              this.props.updateState(data)
+              this.props.setLocationInfo(data)
             })
           }
         }
