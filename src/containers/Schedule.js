@@ -51,7 +51,7 @@ const Schedule = (props) => {
             </thead>
             {/* And below is rendering */}
             <tbody className="chalk-font">
-                {/* {users.map((user, id) => <tr key={user.id}><td>{user.name}</td></tr>)} */}
+                {users.map((user, id) => <tr key={user.id}><td>{user.name}</td></tr>)}
             </tbody>
             </Table>
         </div>
