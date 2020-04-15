@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Chore from "../components/Chore"
+import Cell from "../components/Cell"
 
 const Schedule = (props) => {
   const { authUser, chores, location, users } = props;
@@ -13,13 +14,13 @@ const Schedule = (props) => {
     return (
       <tr>
         <td id={user}>{user.first_name}</td>
-        <td value="MON"></td>
-        <td value="TUE"></td>
-        <td value="WED"></td>
-        <td value="THU"></td>
-        <td value="FRI"></td>
-        <td value="SAT"></td>
-        <td value="SUN"></td>
+        <td value="MON"><Cell/></td>
+        <td value="TUE"><Cell/></td>
+        <td value="WED"><Cell/></td>
+        <td value="THU"><Cell/></td>
+        <td value="FRI"><Cell/></td>
+        <td value="SAT"><Cell/></td>
+        <td value="SUN"><Cell/></td>
         {/* made a td with ${user.id + chore.day} id if it does not exist */}
       </tr>
     );
