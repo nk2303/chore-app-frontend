@@ -9,9 +9,9 @@ const Schedule = (props) => {
 
   const userChores = (user) => {
     return chores.filter((chore) => {
-    return chore.user_id === user.id;
-  })};
-
+      return chore.user_id === user.id;
+    });
+  };
 
   const findChoreByDay = (day, user) => {
     return userChores(user).filter((chore) => chore.day === day);
@@ -44,8 +44,6 @@ const Schedule = (props) => {
       </tr>
     );
   };
-
-  // find <td> by ID and insert chore?
 
   const renderAssignedChores = (chores) => {
     chores.map((chore) => (chore.day ? console.log(chore) : null));
