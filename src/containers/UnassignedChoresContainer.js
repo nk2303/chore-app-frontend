@@ -20,7 +20,9 @@ export default function UnassignedChoresContainer(props) {
           onCompleteChore={onCompleteChore}
           isAdmin={isAdmin}
           users={users}
-          onDeleteChore={onDeleteChore} />
+          onDeleteChore={onDeleteChore}
+          onDrag={(choreName) => console.log('dragging' + choreName)}
+          draggable />
       );
     });
   };

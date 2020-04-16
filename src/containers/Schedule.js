@@ -25,11 +25,11 @@ const Schedule = (props) => {
   const buildTD = (day, user) => {
     let dayChores = findChoreByDay(day, user);
     return (
-      <td value={day}><Cell
-        chore= {dayChores.length > 0
+      <td value={day}>
+        <Cell>{dayChores.length > 0
           ? dayChores.map((chore) => buildChore(chore))
           : null}
-        />
+        </Cell>
       </td>
     );
   };
