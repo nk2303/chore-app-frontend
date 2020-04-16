@@ -4,9 +4,8 @@ import Button from 'react-bootstrap/Button';
 import CreateHouse from '../components/CreateHouse';
 import LeaveHouse from '../components/LeaveHouse';
 import { Link } from 'react-router-dom';
-import EditUser from '../components/EditUser'
+import EditUser from '../components/EditUser';
 import JoinHouse from '../components/JoinHouse';
-
 
 export default class Account extends Component {
 
@@ -25,40 +24,50 @@ export default class Account extends Component {
   }
 
   render() {
-    let {username, first_name, last_name, email, location_id} = this.props.authUser
-    console.log("Under Account", this.props.authUser)
+    const { username, first_name, last_name, email, location_id } = this.props.authUser;
+    const { isAdmin, location, users, history, authUser } = this.props;
     return (
       <div id='sideBar' className="container-fluid row">
         <div className='left-side-menu col-2 text-center'>
           {(location_id) ?
-          (<div> <Button variant="outline-secondary" block><Link to='/house'>See my chore this week</Link></Button>
-          <LeaveHouse/> </div>)
-          :
-          (<div><JoinHouse />
-          <br/>----- Or -----<br/><br/>
-          <CreateHouse history={this.props.history} authUser={this.props.authUser} onAddHouse={this.props.onAddHouse} /></div> )
+            (<div>
+              <Button variant="outline-secondary" block>
+                <Link to='/house'>See the Calendar</Link>
+              </Button>
+              {isAdmin ? null : <LeaveHouse />}
+              {/* add a delete house button  */}
+            </div>)
+            :
+            (<div>Join an Existing Household:
+              <JoinHouse history={history} authUser={authUser} onJoinHouse={this.props.onAddHouse} />
+              <br />----- Or -----<br /><br />
+              <CreateHouse history={history} authUser={authUser} onAddHouse={this.props.onAddHouse} />
+            </div>)
           }
           
         </div>
 
-        <main id="mainbar" className="col-10">
-            <div>
-              <h5>Your account info: </h5>
-              Your username: {username}<br/>
-              Your name: {first_name} {last_name} <br/>
-              Your email: {email}<br/>
-              Your house: {location_id ?
-                `${this.props.location.name}` 
-                : 'You currently belongs to no house.'}<br/>
-              {/* Your admin: {this.props.location.creator ? this.props.location.creator : 'created by computer'}<br/> */}
-              Your housemates: {this.props.users.map(user => user.username).join(', ')} <br/>
-            </div>
-              <br/>
-            <div>
-                <EditUser userInfo={this.props.authUser}/>
-            </div> 
+
+        <main id="mainbar" className="col-7">
+          <div>
+            <h5>Your account info: </h5>
+              Your username: {username}<br />
+              Your name: {first_name} {last_name} <br />
+              Your email: {email}<br />
+              Your house: {location_id ? location.name : 'You do not belong to a house.'} <br />
+              Your admin: {location.id ? users.find(user => user.id === location.creator).first_name : 'Create a house to become an admin'} <br />
+              Your household members: {users.map(user => user.first_name).join(', ')} <br />
+          </div>
+          <br />
+          <div>
+            <EditUser userInfo={this.props.authUser} />
+          </div>
         </main>
-        
+        {isAdmin ?
+          <div className='col-3'>
+            <h5>Your House ID: {location.id} </h5>
+            <h6>Your housemates can use this ID to join your household.</h6>
+          </div> : null}
       </div>
     )
   }
