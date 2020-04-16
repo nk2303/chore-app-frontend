@@ -3,7 +3,8 @@ import UserChoreContainer from "./UserChoreContainer";
 import UnassignedChoresContainer from "./UnassignedChoresContainer";
 import Schedule from "./Schedule";
 import CommentContainer from "./CommentContainer";
-import AssignChore from "../components/AssignChore"
+import AssignChore from "../components/AssignChore";
+import DistributeChores from "../components/DistributeChores";
 import CreateChore from "../components/CreateChore";
 import { api } from "../services/api";
 
@@ -23,9 +24,11 @@ export default class HouseContainer extends Component {
           this.props.history.push("/");
         } else {
           if (this.props.authUser.location_id) {
-            api.location.getLocation(this.props.authUser.location_id).then(data => {
-              this.props.setLocationInfo(data)
-            })
+            api.location
+              .getLocation(this.props.authUser.location_id)
+              .then((data) => {
+                this.props.setLocationInfo(data);
+              });
           }
         }
       });
@@ -33,12 +36,14 @@ export default class HouseContainer extends Component {
   }
 
   filterUnassignedChores = () => {
-    return this.props.chores.filter(chore => chore.user_id === null)
-  }
+    return this.props.chores.filter((chore) => chore.user_id === null);
+  };
 
   filterAssignedChores = () => {
-    return this.props.chores.filter(chore => chore.user_id === this.props.authUser.id && chore.day === null)
-  }
+    return this.props.chores.filter(chore => {
+      return (chore.user_id === this.props.authUser.id) && (chore.day === null)
+    });
+  };
 
   render() {
     return (
@@ -61,26 +66,39 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
                 onCompleteChore={this.props.onCompleteChore}
                 onDeleteChore={this.props.onDeleteChore}
-                isAdmin={this.props.isAdmin} />
+                isAdmin={this.props.isAdmin}
+              />
               <br />
-              {(this.props.isAdmin) ?
-                (<div>
+              {this.props.isAdmin ? (
+                <div>
                   <CreateChore
                     locationId={this.props.authUser.location_id}
-                    onAddChore={this.props.onAddChore} /><br />
+                    onAddChore={this.props.onAddChore}
+                  />
+                  <br />
                   <AssignChore />
-                </div>)
-                :
-                null}
+                  <DistributeChores
+                    users={this.props.users}
+                    chores={this.filterUnassignedChores()}
+                    onAssignChore={this.props.onCompleteChore}
+                  />
+                </div>
+              ) : null}
             </div>
             <main id="mainbar" className="col-10">
-              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} onCompleteChore={this.props.onCompleteChore} isAdmin={this.props.isAdmin} />
+              <Schedule
+                users={this.props.users}
+                chores={this.props.chores}
+                authUser={this.props.authUser}
+                onCompleteChore={this.props.onCompleteChore}
+                isAdmin={this.props.isAdmin}
+              />
               <CommentContainer />
             </main>
           </div>
         ) : (
-            <h1>Join or Create a household on your account page!</h1>
-          )}
+          <h1>Join or Create a household on your account page!</h1>
+        )}
       </>
     );
   }
