@@ -100,6 +100,14 @@ class App extends React.Component {
     })
   }
 
+  deleteChore = (deletedId) => {
+    this.setState(prev => {
+      return({
+        chores: prev.chores.filter(chore => chore.id !== deletedId)
+      })
+    })
+  }
+
   render() {
     console.log("location in app", this.state.location)
       return (
@@ -108,7 +116,7 @@ class App extends React.Component {
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
             <Route exact path='/account' render={(props)=><Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} onAddChore={this.addChore} onCompleteChore={this.updateChore} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} onAddChore={this.addChore} onCompleteChore={this.updateChore} onDeleteChore={this.deleteChore}/>}/>
           </Router>
     
         </div>
