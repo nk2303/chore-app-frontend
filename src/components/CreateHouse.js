@@ -54,7 +54,7 @@ class CreateHouse extends Component {
     return (
       <div>
         <Button variant="secondary" onClick={this.handleShow} block>
-          Create new house
+          Create a new house
                 </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
@@ -75,7 +75,7 @@ class CreateHouse extends Component {
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.handleSubmit}>
                   Create a house!
-                                </Button>
+                </Button>
               </Modal.Footer>
             </Form>
           </Modal.Body>
