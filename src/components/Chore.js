@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 
 import { Modal, Accordion, Card, Button } from "react-bootstrap";
+import { api } from '../services/api';
 
 // Display Chore details: on click, setState to send clicked chore
 
@@ -8,11 +9,10 @@ const Chore = (props) => {
   const {
     name,
     description,
-    user,
+    user_id,
     day,
     icon,
     completed,
-    showChoreDetail,
   } = props.chore;
 
   const [show, setShow] = useState(false);
@@ -22,6 +22,19 @@ const Chore = (props) => {
   // this hook below toggled "completed" boolean
   const [complete, setComplete] = useState(completed);
  
+  const handleClickComplete = () => {
+    setComplete(!complete)
+    let newChore = {...props.chore, completed: complete}
+    api.chore.updateChore({chore: newChore})
+    .then(resp => {
+      props.onCompleteChore(resp);
+      handleClose();
+    })
+  }
+
+  const assignedUser = (user_id) => {
+    return (user_id ? props.users.find(user => user.id === user_id).first_name : null)
+  }
 
   return (
     <Accordion>
@@ -45,14 +58,14 @@ const Chore = (props) => {
           <Modal.Body>
             <div>
               <p>{description}</p>
-              <h5>Assigned to: {user}</h5>
+              <h5>Assigned to: {assignedUser(user_id)}</h5>
               <h5>Schedule on: {day}</h5>
               <p>Status: {complete ? "Finished!" : "Incomplete"} </p>
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={()=>setComplete(!complete)}>Mark Complete!</Button>
-            <Button>Delete</Button>
+            <Button onClick={handleClickComplete}>{complete ? "No I didn't!" : "Mark Complete!"}</Button> 
+            {props.isAdmin ? <Button>Delete</Button> : null}
           </Modal.Footer>
         </Modal>
       </Card>
