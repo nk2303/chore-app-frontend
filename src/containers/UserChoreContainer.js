@@ -2,12 +2,13 @@ import React from "react";
 import Chore from "../components/Chore";
 // import broom from "../assets/broom.png";
 import paperBackground from "../assets/recyclepaper.jpg";
+import { Accordion } from "react-bootstrap";
 
 
 export default function UserChoreContainer(props) {
   // Inherit chores
   // map through and create Chores for each
-  const { chores, authUser, onCompleteChore, isAdmin, users, onDeleteChore } = props;
+  const { chores, authUser, onCompleteChore, isAdmin, users, onDeleteChore, onDragStart } = props;
 
   const displayChores = (chores) => {
     return chores.map((chore) => {
@@ -19,7 +20,7 @@ export default function UserChoreContainer(props) {
           isAdmin={isAdmin}
           users={users}
           onDeleteChore={onDeleteChore}
-          onDrag={(choreName) => console.log('dragging' + choreName)}
+          onDrag={onDragStart}
           draggable
           />
       );
@@ -36,7 +37,9 @@ export default function UserChoreContainer(props) {
     <div style={backgroundImg}>
       <div>
           Your Chores
-          {displayChores(chores)}
+          <Accordion>
+            {displayChores(chores)}
+          </Accordion>
       </div>
     </div>
   );

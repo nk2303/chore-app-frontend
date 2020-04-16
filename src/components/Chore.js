@@ -6,6 +6,14 @@ import { api } from '../services/api';
 // Display Chore details: on click, setState to send clicked chore
 
 const Chore = (props) => {
+
+  const {
+    showChoreDetail,
+    draggable,
+    onDragStart,
+    chore
+  } = props;
+
   const {
     id,
     name,
@@ -14,31 +22,13 @@ const Chore = (props) => {
     day,
     icon,
     completed
-  } = props.chore;
-
-  const {
-    showChoreDetail,
-    draggable,
-    onDrag
-  } = props;
+  } = chore;
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
 
-  // const dragStart = e => {
-  //   const target = e.target;
-
-  //   setTimeout(() => {
-  //     target.style.display = "none";
-  //   },0);
-  // }
-
-  // const dragOver = e => {
-  //   e.stopPropagation();
-  // }
-  // this hook below toggled "completed" boolean
   const [complete, setComplete] = useState(completed);
  
   const handleClickComplete = () => {
@@ -64,8 +54,7 @@ const Chore = (props) => {
   }
 
   return (
-    <Accordion>
-      <Card className="chore-card" text='dark' style={{ width: "5rem" }}>
+      <Card className="chore-card" text='dark' style={{ width: "5rem" }} draggable={draggable} onDragStart={() => onDragStart(chore)}>
         <Accordion.Toggle as={Card.Header} eventKey="0">
           <Card.Img src={null}></Card.Img>
           <FontAwesomeIcon icon={icon} size="2x"/>
@@ -98,7 +87,7 @@ const Chore = (props) => {
           </Modal.Footer>
         </Modal>
       </Card>
-    </Accordion> )
+  );
 
 };
 

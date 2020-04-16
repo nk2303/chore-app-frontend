@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Accordion } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Chore from "../components/Chore";
 import Cell from "../components/Cell";
@@ -25,9 +25,9 @@ const Schedule = (props) => {
   const buildTD = (day, user) => {
     let dayChores = findChoreByDay(day, user);
     return (
-      <td value={day}>
+      <td value={day} onDrop={() => props.onDrop(day, user.id)} onDragOver={e => e.preventDefault()}>
         <Cell>{dayChores.length > 0
-          ? dayChores.map((chore) => buildChore(chore))
+          ? <Accordion>{dayChores.map((chore) => buildChore(chore))}</Accordion>
           : null}
         </Cell>
       </td>
