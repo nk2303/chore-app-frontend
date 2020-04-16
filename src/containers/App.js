@@ -78,6 +78,20 @@ class App extends React.Component {
     })
   }
 
+  addHouse = data => {
+    this.setState({
+      authUser: data.user
+    })
+  }
+
+  addChore = data => {
+    this.setState(prev => {
+      return({
+        chores: [...prev.chores, data.chore]
+      })
+    })
+  }
+
   render() {
     console.log("location in app", this.state.location)
       return (
@@ -86,7 +100,7 @@ class App extends React.Component {
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
             <Route exact path='/account' render={(props)=><Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} onAddChore={this.addChore} />}/>
           </Router>
     
         </div>
