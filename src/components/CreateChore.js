@@ -51,6 +51,13 @@ class CreateChore extends Component {
       if (!resp.error) {
         this.props.onAddChore(resp);
         this.handleClose();
+        this.setState({
+          fields: {
+            name: "",
+            description: "",
+            icon: null,
+          },
+        });
       }
     });
   };

@@ -68,13 +68,8 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
                 onCompleteChore={this.props.onCompleteChore}
                 onDeleteChore={this.props.onDeleteChore}
-<<<<<<< HEAD
                 onDragStart={onDragStart}
                 isAdmin={this.props.isAdmin} />
-=======
-                isAdmin={this.props.isAdmin}
-              />
->>>>>>> assigning-chores
               <br />
               {this.props.isAdmin ? (
                 <div>
@@ -99,11 +94,7 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
                 onCompleteChore={this.props.onCompleteChore}
                 isAdmin={this.props.isAdmin}
-<<<<<<< HEAD
                 onDrop={onDrop}/>
-=======
-              />
->>>>>>> assigning-chores
               <CommentContainer />
             </main>
           </div>
