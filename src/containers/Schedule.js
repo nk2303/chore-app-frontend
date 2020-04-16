@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Chore from "../components/Chore";
+import Cell from "../components/Cell";
 
 const Schedule = (props) => {
   const { authUser, chores, users } = props;
@@ -24,10 +25,11 @@ const Schedule = (props) => {
   const buildTD = (day, user) => {
     let dayChores = findChoreByDay(day, user);
     return (
-      <td value={day}>
-        {dayChores.length > 0
+      <td value={day}><Cell
+        chore= {dayChores.length > 0
           ? dayChores.map((chore) => buildChore(chore))
           : null}
+        />
       </td>
     );
   };
@@ -57,7 +59,7 @@ const Schedule = (props) => {
   return (
     <div>
       <Table striped bordered hover variant="dark">
-        <thead class="chalk-font text-align-center" style={transBG}>
+        <thead className="chalk-font text-align-center" style={transBG}>
           <tr>
             <th></th>
             <th>MON</th>
@@ -73,7 +75,7 @@ const Schedule = (props) => {
         {/* render rows based on users in house */}
         {/* each user row renders 5 <td>s with value equal to each day */}
         {/* chores are checked for user and assigned day and are rendered on correspondings <td> */}
-        <tbody class="chalk-font">
+        <tbody className="chalk-font">
           {buildSchedule(users)}
           {renderAssignedChores(users)}
           <tr>

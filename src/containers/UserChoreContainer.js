@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import paperBackground from "../assets/recycling-texture.JPG";
 import Chore from "../components/Chore";
+import { Accordion } from "react-bootstrap";
 
 export default class UserChoreContainer extends Component {
   state = {
@@ -12,7 +13,6 @@ export default class UserChoreContainer extends Component {
     //   console.log("timeout");
       let userChores = this.props.chores.filter((chore)=> {
           return chore.user_id === this.props.authUser.id
-
         }
       );
       this.setState({
@@ -31,12 +31,15 @@ export default class UserChoreContainer extends Component {
       backgroundSize: "cover",
     };
 
+
     return (
       <div style={backgroundImg}>
-        <div>
+        <Accordion>
           {!this.state.currentUserChores == []
             ? this.state.currentUserChores.map((chore) => (
-                <Chore
+                <Chore onDrag={(choreName) => console.log('dragging' + choreName)}
+                  draggable
+                  key={chore.id} // Kim
                   name={chore.name}
                   description={chore.description}
                   location={chore.location}
@@ -48,7 +51,7 @@ export default class UserChoreContainer extends Component {
               ))
             : null}
           Your Current Chores
-        </div>
+        </Accordion>
       </div>
     );
   }
