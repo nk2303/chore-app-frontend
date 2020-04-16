@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Chore from "../components/Chore";
 import broom from "../assets/broom.png";
 import paperBackground from "../assets/recyclepaper.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const chore = [
   {
@@ -10,7 +12,7 @@ const chore = [
     location: "3102 E Cherry St.",
     user: "Jonny",
     day: "Thursday",
-    icon: broom,
+    icon: <FontAwesomeIcon icon="coffee"/>,
     completed: true,
   },
 ];
@@ -41,6 +43,7 @@ export default class UnassignedChoresContainer extends Component {
       backgroundSize: "cover",
     };
     return (
+
       <div style={backgroundImg}>
         <div>
           Unassigned Chores

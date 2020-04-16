@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { api } from '../services/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class CreateChore extends Component {
   state = {
@@ -54,7 +55,7 @@ class CreateChore extends Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Create a new house</Modal.Title>
+            <Modal.Title>Create a new chore</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -83,7 +84,7 @@ class CreateChore extends Component {
                   value={this.state.fields.icon}
                   onChange={event => this.handleChange(event)}>
                   <option>Select an icon...</option>
-                  <option>1</option>
+                  <option><FontAwesomeIcon icon="broom"/></option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>

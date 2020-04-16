@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal, Accordion, Card, Button } from "react-bootstrap";
 
 // Display Chore details: on click, setState to send clicked chore
@@ -25,16 +25,17 @@ const Chore = (props) => {
 
   return (
     <Accordion>
-      <Card className="text-center dark" style={{ width: "5rem" }}>
+      <Card className="chore-card" text='dark' style={{ width: "5rem" }}>
         <Accordion.Toggle as={Card.Header} eventKey="0">
-          <Card.Img src={icon} />
+          <Card.Img src={null}></Card.Img>
+          <FontAwesomeIcon icon={icon} size="2x"/>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="0">
           <Card.Subtitle>{description}</Card.Subtitle>
         </Accordion.Collapse>
         <Card.Title onClick={handleShow}>{name}</Card.Title>
         <Modal
-          className="text-center"
+          className="text-centered"
           show={show}
           onHide={handleClose}
           animation={false}
