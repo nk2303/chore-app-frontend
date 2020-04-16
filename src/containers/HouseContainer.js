@@ -32,6 +32,14 @@ export default class HouseContainer extends Component {
     }
   }
 
+  filterUnassignedChores = () => {
+    return this.props.chores.filter(chore => chore.user_id === null)
+  }
+
+  filterAssignedChores = () => {
+    return this.props.chores.filter(chore => chore.user_id === this.props.authUser.id && chore.day === null)
+  }
+
   render() {
     return (
       <>
@@ -39,29 +47,40 @@ export default class HouseContainer extends Component {
           <div id="sideBar" className="container-fluid row">
             <div className="left-side-menu col-2">
               <UserChoreContainer
-                chores={this.props.chores}
+                chores={this.filterAssignedChores()}
                 users={this.props.users}
                 authUser={this.props.authUser}
+                onCompleteChore={this.props.onCompleteChore}
+                onDeleteChore={this.props.onDeleteChore}
+                isAdmin={this.props.isAdmin}
               />
               <br />
-              <UnassignedChoresContainer chores={this.props.chores} />
+              <UnassignedChoresContainer
+                chores={this.filterUnassignedChores()}
+                users={this.props.users}
+                authUser={this.props.authUser}
+                onCompleteChore={this.props.onCompleteChore}
+                onDeleteChore={this.props.onDeleteChore}
+                isAdmin={this.props.isAdmin} />
               <br />
               {(this.props.isAdmin) ?
                 (<div>
-                  <CreateChore locationId={this.props.authUser.location_id} onAddChore={this.props.onAddChore} /><br/>
-                  <AssignChore/>
+                  <CreateChore
+                    locationId={this.props.authUser.location_id}
+                    onAddChore={this.props.onAddChore} /><br />
+                  <AssignChore />
                 </div>)
                 :
-                null }
+                null}
             </div>
             <main id="mainbar" className="col-10">
-              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} />
+              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} onCompleteChore={this.props.onCompleteChore} isAdmin={this.props.isAdmin} />
               <CommentContainer />
             </main>
           </div>
         ) : (
-          <h1>Join or Create a household on your account page!</h1>
-        )}
+            <h1>Join or Create a household on your account page!</h1>
+          )}
       </>
     );
   }
