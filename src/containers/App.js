@@ -7,7 +7,13 @@ import Landing from './Landing';
 import Account from './Account';
 import HouseContainer from './HouseContainer';
 import background from '../assets/recycling-texture.JPG';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckCircle, faBroom, faDumpster, faTrash, faUtensilSpoon, faSeedling, faBath, faDrumstickBite, faHotdog, faLeaf, faPaw } from '@fortawesome/free-solid-svg-icons'
 
+
+library.add(fab, faCheckCircle, faBroom, faDumpster, faTrash, faUtensilSpoon, faSeedling, faBath, faDrumstickBite, faHotdog, faLeaf, faPaw)
+// library.add(fas, faCheckSquare, faCoffee)
 
 // authUser gets looked up in database
 // chores.filter(user == authUser).map((chore) => chore.day? send to Schedule : UserChores)

@@ -2,6 +2,8 @@ import React from "react";
 import Chore from "../components/Chore";
 // import broom from "../assets/broom.png";
 import paperBackground from "../assets/recyclepaper.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 export default function UnassignedChoresContainer(props) {
