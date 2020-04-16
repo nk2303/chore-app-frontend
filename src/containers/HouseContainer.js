@@ -48,7 +48,7 @@ export default class HouseContainer extends Component {
               <br />
               {(this.props.isAdmin) ?
                 (<div>
-                  <CreateChore/><br/>
+                  <CreateChore locationId={this.props.authUser.location_id} onAddChore={this.props.onAddChore} /><br/>
                   <AssignChore/>
                 </div>)
                 :
