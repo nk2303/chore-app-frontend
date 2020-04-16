@@ -13,7 +13,7 @@ const Chore = (props) => {
     icon,
     completed,
     showChoreDetail,
-  } = props;
+  } = props.chore;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -42,7 +42,7 @@ const Chore = (props) => {
               <p>{description}</p>
               <h5>Assigned to: {user}</h5>
               <h5>Schedule on: {day}</h5>
-              {completed ? <p>Finished!</p> : <p>Incomplete</p>}
+              <p>Status: {completed ? "Finished!" : "Incomplete"} </p>
             </div>
           </Modal.Body>
         </Modal>
