@@ -79,7 +79,6 @@ class App extends React.Component {
   }
 
   addHouse = data => {
-    console.log(data.user)
     this.setState({
       authUser: data.user
     })
