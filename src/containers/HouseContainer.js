@@ -23,11 +23,9 @@ export default class HouseContainer extends Component {
           this.props.history.push("/");
         } else {
           if (this.props.authUser.location_id) {
-            api.location
-              .getLocation(this.props.authUser.location_id)
-              .then((data) => {
-                this.props.setLocationInfo(data);
-              });
+            api.location.getLocation(this.props.authUser.location_id).then(data => {
+              this.props.setLocationInfo(data)
+            })
           }
         }
       });
@@ -50,7 +48,7 @@ export default class HouseContainer extends Component {
               <br />
               {(this.props.isAdmin) ?
                 (<div>
-                  <CreateChore/><br/>
+                  <CreateChore locationId={this.props.authUser.location_id} onAddChore={this.props.onAddChore} /><br/>
                   <AssignChore/>
                 </div>)
                 :
