@@ -1,45 +1,40 @@
-import React, { Component } from "react";
-import paperBackground from "../assets/recycling-texture.JPG";
+import React from "react";
 import Chore from "../components/Chore";
+// import broom from "../assets/broom.png";
+import paperBackground from "../assets/recyclepaper.jpg";
 
-export default class UserChoreContainer extends Component {
-  state = {
-    currentUserChores: [],
+
+export default function UserChoreContainer(props) {
+  // Inherit chores
+  // map through and create Chores for each
+  const { chores, authUser, onCompleteChore, isAdmin, users, onDeleteChore } = props;
+
+  const displayChores = (chores) => {
+    return chores.map((chore) => {
+      return (
+        <Chore
+          chore={chore}
+          authUser={authUser}
+          onCompleteChore={onCompleteChore}
+          isAdmin={isAdmin}
+          users={users}
+          onDeleteChore={onDeleteChore} />
+      );
+    });
   };
 
-  findAssignedChores = () => {
-    setTimeout(() => {
-      //   console.log("timeout");
-      let userChores = this.props.chores.filter((chore) => {
-        return chore.user_id === this.props.authUser.id;
-      });
-      this.setState({
-        currentUserChores: userChores,
-      });
-    }, 200);
+
+
+  const backgroundImg = {
+    backgroundImage: `url(${paperBackground})`,
+    backgroundSize: "cover",
   };
-
-  componentDidMount() {
-    this.findAssignedChores();
-  }
-
-  render() {
-    var backgroundImg = {
-      backgroundImage: `url(${paperBackground})`,
-      backgroundSize: "cover",
-    };
-
-    return (
-      <div style={backgroundImg}>
-        <div>
-          {!this.state.currentUserChores == []
-            ? this.state.currentUserChores.map((chore) => (
-                <Chore chore={chore} />
-              ))
-            : null}
-          Your Current Chores
-        </div>
+  return (
+    <div style={backgroundImg}>
+      <div>
+          Your Chores
+          {displayChores(chores)}
       </div>
-    );
-  }
+    </div>
+  );
 }
