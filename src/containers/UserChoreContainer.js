@@ -39,7 +39,7 @@ export default class UserChoreContainer extends Component {
             ? this.state.currentUserChores.map((chore) => (
                 <Chore onDrag={(choreName) => console.log('dragging' + choreName)}
                   draggable
-                  key={chore.id} // Kim
+                  key={chore.id}
                   name={chore.name}
                   description={chore.description}
                   location={chore.location}

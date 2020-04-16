@@ -5,6 +5,8 @@ import CreateHouse from '../components/CreateHouse';
 import LeaveHouse from '../components/LeaveHouse';
 import { Link } from 'react-router-dom';
 import EditUser from '../components/EditUser'
+import JoinHouse from '../components/JoinHouse';
+
 
 export default class Account extends Component {
 
@@ -27,14 +29,16 @@ export default class Account extends Component {
     console.log("Under Account", this.props.authUser)
     return (
       <div id='sideBar' className="container-fluid row">
-        <div className='left-side-menu col-2'>
-          <Button variant="outline-secondary" block><Link to='/house'>See my chore this week</Link></Button>
-          <br/><br/>
+        <div className='left-side-menu col-2 text-center'>
           {(location_id) ?
-          <LeaveHouse/>
+          (<div> <Button variant="outline-secondary" block><Link to='/house'>See my chore this week</Link></Button>
+          <LeaveHouse/> </div>)
           :
-          <CreateHouse history={this.props.history} authUser={this.props.authUser} onAddHouse={this.props.onAddHouse} />
+          (<div><JoinHouse />
+          <br/>----- Or -----<br/><br/>
+          <CreateHouse history={this.props.history} authUser={this.props.authUser} onAddHouse={this.props.onAddHouse} /></div> )
           }
+          
         </div>
 
         <main id="mainbar" className="col-10">
