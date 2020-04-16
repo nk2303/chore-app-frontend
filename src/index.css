@@ -29,3 +29,9 @@ code {
 .opacity-60 {
   opacity: 0.6;
 }
+
+.chore-card {
+  background-color: gray;
+  font-family: BlinkMacSystemFont
+  
+}

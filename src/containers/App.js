@@ -7,7 +7,13 @@ import Landing from './Landing';
 import Account from './Account';
 import HouseContainer from './HouseContainer';
 import background from '../assets/recycling-texture.JPG';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckCircle, faBroom, faDumpster, faTrash, faUtensilSpoon, faSeedling, faBath, faDrumstickBite, faHotdog, faLeaf, faPaw } from '@fortawesome/free-solid-svg-icons'
 
+
+library.add(fab, faCheckCircle, faBroom, faDumpster, faTrash, faUtensilSpoon, faSeedling, faBath, faDrumstickBite, faHotdog, faLeaf, faPaw)
+// library.add(fas, faCheckSquare, faCoffee)
 
 // authUser gets looked up in database
 // chores.filter(user == authUser).map((chore) => chore.day? send to Schedule : UserChores)
@@ -100,6 +106,14 @@ class App extends React.Component {
     })
   }
 
+  deleteChore = (deletedId) => {
+    this.setState(prev => {
+      return({
+        chores: prev.chores.filter(chore => chore.id !== deletedId)
+      })
+    })
+  }
+
   render() {
     console.log("location in app", this.state.location)
       return (
@@ -108,7 +122,7 @@ class App extends React.Component {
             <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
             <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
             <Route exact path='/account' render={(props)=><Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} onAddChore={this.addChore} onCompleteChore={this.updateChore} />}/>
+            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} onAddChore={this.addChore} onCompleteChore={this.updateChore} onDeleteChore={this.deleteChore}/>}/>
           </Router>
     
         </div>
