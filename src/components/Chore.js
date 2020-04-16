@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal, Accordion, Card, Button } from "react-bootstrap";
 import { api } from '../services/api';
