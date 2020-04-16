@@ -6,6 +6,14 @@ import { api } from '../services/api';
 // Display Chore details: on click, setState to send clicked chore
 
 const Chore = (props) => {
+
+  const {
+    showChoreDetail,
+    draggable,
+    onDragStart,
+    chore
+  } = props;
+
   const {
     id,
     name,
@@ -13,14 +21,14 @@ const Chore = (props) => {
     user_id,
     day,
     icon,
-    completed,
-  } = props.chore;
+    completed
+  } = chore;
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // this hook below toggled "completed" boolean
+
   const [complete, setComplete] = useState(completed);
  
   const handleClickComplete = () => {
@@ -46,8 +54,7 @@ const Chore = (props) => {
   }
 
   return (
-    <Accordion>
-      <Card className="chore-card" text='dark' style={{ width: "5rem" }}>
+      <Card className="chore-card" text='dark' style={{ width: "5rem" }} draggable={draggable} onDragStart={() => onDragStart(chore)}>
         <Accordion.Toggle as={Card.Header} eventKey="0">
           <Card.Img src={null}></Card.Img>
           <FontAwesomeIcon icon={icon} size="2x"/>
@@ -80,8 +87,8 @@ const Chore = (props) => {
           </Modal.Footer>
         </Modal>
       </Card>
-    </Accordion>
   );
+
 };
 
 export default Chore;

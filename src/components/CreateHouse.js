@@ -53,7 +53,7 @@ class CreateHouse extends Component {
   render() {
     return (
       <div>
-        <Button variant="outline-secondary" onClick={this.handleShow} block>
+        <Button variant="secondary" onClick={this.handleShow} block>
           Create new house
                 </Button>
 

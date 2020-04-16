@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../App.css';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { api } from '../services/api';
 import NavBar from './NavBar';
 import Landing from './Landing';
@@ -19,10 +19,10 @@ library.add(fab, faCheckCircle, faBroom, faDumpster, faTrash, faUtensilSpoon, fa
 // chores.filter(user == authUser).map((chore) => chore.day? send to Schedule : UserChores)
 
 class App extends React.Component {
-   sectionStyle = {
+  sectionStyle = {
     backgroundImage: `url(${background})`,
     minHeight: '800px',
-    backgroundSize:'cover'
+    backgroundSize: 'cover'
   };
 
   constructor() {
@@ -32,15 +32,16 @@ class App extends React.Component {
       location: {},
       users: [],
       chores: [],
-      isAdmin: false
+      isAdmin: false,
+      draggedChore: null
     };
   }
 
   isAdmin() {
-    (this.state.location.creator === this.state.authUser.id) ? 
-    ( this.setState({isAdmin: true}) )
-    :
-    ( this.setState({isAdmin: false}) )
+    (this.state.location.creator === this.state.authUser.id) ?
+      (this.setState({ isAdmin: true }))
+      :
+      (this.setState({ isAdmin: false }))
   }
 
   componentDidMount() {
@@ -63,14 +64,14 @@ class App extends React.Component {
   };
 
   returningUser = data => {
-    this.setState({ authUser: data.user})
+    this.setState({ authUser: data.user })
   }
 
   setLocationInfo = data => {
     console.log("under App", data);
-    const {name, id, creator, users, chores} = data.location;
+    const { name, id, creator, users, chores } = data.location;
     this.setState({
-      location: {name, id, creator},
+      location: { name, id, creator },
       users, //array of objs
       chores //array of objs
     })
@@ -92,7 +93,7 @@ class App extends React.Component {
 
   addChore = data => {
     this.setState(prev => {
-      return({
+      return ({
         chores: [...prev.chores, data.chore]
       })
     })
@@ -100,7 +101,7 @@ class App extends React.Component {
 
   updateChore = data => {
     this.setState(prev => {
-      return({
+      return ({
         chores: [...prev.chores.filter(chore => chore.id !== data.chore.id), data.chore]
       })
     })
@@ -108,26 +109,49 @@ class App extends React.Component {
 
   deleteChore = (deletedId) => {
     this.setState(prev => {
-      return({
+      return ({
         chores: prev.chores.filter(chore => chore.id !== deletedId)
       })
     })
   }
 
-  render() {
-    console.log(library)
-      return (
-        <div style={this.sectionStyle}>
-          <Router>
-            <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
-            <Route exact path='/' render={(props)=><Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />}/>
-            <Route exact path='/account' render={(props)=><Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />}/>
-            <Route exact path='/house' render={(props)=><HouseContainer {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} chores={this.state.chores} users={this.state.users} setLocationInfo={this.setLocationInfo} onAddChore={this.addChore} onCompleteChore={this.updateChore} onDeleteChore={this.deleteChore}/>}/>
-          </Router>
-    
-        </div>
-      );
-    }
+  onDragStart = (chore) => {
+    this.setState({ draggedChore: chore });
   }
+
+  onDrop = (day, user_id) => {
+    this.setState(prevState => ({
+      draggedChore: null,
+      chores: prevState.chores.map(chore => prevState.draggedChore.id === chore.id ? ({...chore, day, user_id}) : chore)
+    }));
+  }
+
+  render() {
+    console.log("location in app", this.state.location)
+    return (
+      <div style={this.sectionStyle}>
+        <Router>
+          <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
+          <Route exact path='/' render={(props) => <Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />} />
+          <Route exact path='/account' render={(props) => <Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />} />
+          <Route exact path='/house' render={(props) => <HouseContainer {...props}
+                                isAdmin={this.state.isAdmin}
+                                authUser={this.state.authUser}
+                                chores={this.state.chores}
+                                users={this.state.users}
+                                setLocationInfo={this.setLocationInfo}
+                                onAddChore={this.addChore}
+                                onCompleteChore={this.updateChore}
+                                onDeleteChore={this.deleteChore}
+                                onDragStart={this.onDragStart}
+                                onDrop={this.onDrop} />
+          }
+          />
+        </Router>
+
+      </div>
+    );
+  }
+}
 
 export default App;

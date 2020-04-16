@@ -41,6 +41,7 @@ export default class HouseContainer extends Component {
   }
 
   render() {
+    const { onDragStart, onDrop } = this.props;
     return (
       <>
         {this.props.authUser.location_id ? (
@@ -52,6 +53,7 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
                 onCompleteChore={this.props.onCompleteChore}
                 onDeleteChore={this.props.onDeleteChore}
+                onDragStart={onDragStart}
                 isAdmin={this.props.isAdmin}
               />
               <br />
@@ -61,6 +63,7 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
                 onCompleteChore={this.props.onCompleteChore}
                 onDeleteChore={this.props.onDeleteChore}
+                onDragStart={onDragStart}
                 isAdmin={this.props.isAdmin} />
               <br />
               {(this.props.isAdmin) ?
@@ -74,7 +77,13 @@ export default class HouseContainer extends Component {
                 null}
             </div>
             <main id="mainbar" className="col-10">
-              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} onCompleteChore={this.props.onCompleteChore} isAdmin={this.props.isAdmin} />
+              <Schedule
+                users={this.props.users}
+                chores={this.props.chores}
+                authUser={this.props.authUser}
+                onCompleteChore={this.props.onCompleteChore}
+                isAdmin={this.props.isAdmin}
+                onDrop={onDrop}/>
               <CommentContainer />
             </main>
           </div>
