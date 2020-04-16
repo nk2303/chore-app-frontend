@@ -4,17 +4,15 @@ import Chore from "../components/Chore";
 
 export default class UserChoreContainer extends Component {
   state = {
-    currentUserChores: []
+    currentUserChores: [],
   };
 
   findAssignedChores = () => {
     setTimeout(() => {
-    //   console.log("timeout");
-      let userChores = this.props.chores.filter((chore)=> {
-          return chore.user_id === this.props.authUser.id
-
-        }
-      );
+      //   console.log("timeout");
+      let userChores = this.props.chores.filter((chore) => {
+        return chore.user_id === this.props.authUser.id;
+      });
       this.setState({
         currentUserChores: userChores,
       });
@@ -36,15 +34,7 @@ export default class UserChoreContainer extends Component {
         <div>
           {!this.state.currentUserChores == []
             ? this.state.currentUserChores.map((chore) => (
-                <Chore
-                  name={chore.name}
-                  description={chore.description}
-                  location={chore.location}
-                  user={chore.user}
-                  day={chore.day}
-                  icon={chore.icon}
-                  completed={chore.completed}
-                />
+                <Chore chore={chore} />
               ))
             : null}
           Your Current Chores

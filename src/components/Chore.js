@@ -13,14 +13,19 @@ const Chore = (props) => {
     icon,
     completed,
     showChoreDetail,
-  } = props;
+  } = props.chore;
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // this hook below toggled "completed" boolean
+  const [complete, setComplete] = useState(completed);
+ 
+
   return (
     <Accordion>
-      <Card className="text-center" style={{ width: "5rem" }}>
+      <Card className="text-center dark" style={{ width: "5rem" }}>
         <Accordion.Toggle as={Card.Header} eventKey="0">
           <Card.Img src={icon} />
         </Accordion.Toggle>
@@ -42,9 +47,13 @@ const Chore = (props) => {
               <p>{description}</p>
               <h5>Assigned to: {user}</h5>
               <h5>Schedule on: {day}</h5>
-              {completed ? <p>Finished!</p> : <p>Incomplete</p>}
+              <p>Status: {complete ? "Finished!" : "Incomplete"} </p>
             </div>
           </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={()=>setComplete(!complete)}>Mark Complete!</Button>
+            <Button>Delete</Button>
+          </Modal.Footer>
         </Modal>
       </Card>
     </Accordion>

@@ -19,18 +19,15 @@ export default class UnassignedChoresContainer extends Component {
   // Inherit chores
   // map through and create Chores for each
 
+  findUnassignedChores = () => {
+      return this.props.chores.filter(chore => chore.user == null)
+  }
+
   displayChores = (chores) => {
     return chores.map((chore) => {
       return (
         <Chore
-          showChoreDetail={this.props.showChoreDetail}
-          name={chore.name}
-          description={chore.description}
-          location={chore.location}
-          user={chore.user}
-          day={chore.day}
-          icon={chore.icon}
-          completed={chore.completed}
+          chore={chore}
         />
       );
     });
