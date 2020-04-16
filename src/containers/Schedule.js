@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Chore from "../components/Chore";
 
 const Schedule = (props) => {
-  const { authUser, chores, users, isAdmin, onCompleteChore } = props;
+  const { authUser, chores, users, isAdmin, onCompleteChore, onDeleteChore } = props;
   const week = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
   const userChores = (user) => {
@@ -18,7 +18,7 @@ const Schedule = (props) => {
   };
 
   const buildChore = (chore) => {
-    return <Chore chore={chore} onCompleteChore={onCompleteChore} isAdmin={isAdmin} authUser={authUser} users={users} />;
+    return <Chore chore={chore} onCompleteChore={onCompleteChore} isAdmin={isAdmin} authUser={authUser} users={users} onDeleteChore={onDeleteChore}/>;
   };
 
   const buildTD = (day, user) => {
