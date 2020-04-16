@@ -5,16 +5,15 @@ import { Accordion } from "react-bootstrap";
 
 export default class UserChoreContainer extends Component {
   state = {
-    currentUserChores: []
+    currentUserChores: [],
   };
 
   findAssignedChores = () => {
     setTimeout(() => {
-    //   console.log("timeout");
-      let userChores = this.props.chores.filter((chore)=> {
-          return chore.user_id === this.props.authUser.id
-        }
-      );
+      //   console.log("timeout");
+      let userChores = this.props.chores.filter((chore) => {
+        return chore.user_id === this.props.authUser.id;
+      });
       this.setState({
         currentUserChores: userChores,
       });
@@ -37,16 +36,9 @@ export default class UserChoreContainer extends Component {
         <Accordion>
           {!this.state.currentUserChores == []
             ? this.state.currentUserChores.map((chore) => (
-                <Chore onDrag={(choreName) => console.log('dragging' + choreName)}
+                <Chore chore={chore} onDrag={(choreName) => console.log('dragging' + choreName)}
                   draggable
-                  key={chore.id}
-                  name={chore.name}
-                  description={chore.description}
-                  location={chore.location}
-                  user={chore.user}
-                  day={chore.day}
-                  icon={chore.icon}
-                  completed={chore.completed}
+                  
                 />
               ))
             : null}

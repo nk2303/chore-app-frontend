@@ -5,7 +5,7 @@ import Chore from "../components/Chore";
 import Cell from "../components/Cell";
 
 const Schedule = (props) => {
-  const { authUser, chores, users } = props;
+  const { authUser, chores, users, isAdmin, onCompleteChore } = props;
   const week = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
   const userChores = (user) => {
@@ -19,7 +19,7 @@ const Schedule = (props) => {
   };
 
   const buildChore = (chore) => {
-    return <Chore chore={chore} />;
+    return <Chore chore={chore} onCompleteChore={onCompleteChore} isAdmin={isAdmin} authUser={authUser} users={users} />;
   };
 
   const buildTD = (day, user) => {
