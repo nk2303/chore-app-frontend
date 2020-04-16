@@ -115,7 +115,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("location in app", this.state.location)
+    console.log(library)
       return (
         <div style={this.sectionStyle}>
           <Router>
