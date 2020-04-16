@@ -44,7 +44,7 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
               />
               <br />
-              <UnassignedChoresContainer chores={this.props.chores} />
+              <UnassignedChoresContainer chores={this.props.chores} users={this.props.users} authUser={this.props.authUser} onCompleteChore={this.props.onCompleteChore} isAdmin={this.props.isAdmin}/>
               <br />
               {(this.props.isAdmin) ?
                 (<div>
@@ -55,7 +55,7 @@ export default class HouseContainer extends Component {
                 null }
             </div>
             <main id="mainbar" className="col-10">
-              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} />
+              <Schedule users={this.props.users} chores={this.props.chores} authUser={this.props.authUser} onCompleteChore={this.props.onCompleteChore} isAdmin={this.props.isAdmin} />
               <CommentContainer />
             </main>
           </div>
