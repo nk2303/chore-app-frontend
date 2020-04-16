@@ -1,11 +1,6 @@
 import React from 'react'
 // props.children
 
-<<<<<<< HEAD
-return(
-<td></td>
-)
-=======
 function Cell (props) {
 
     const drop = (e) => {
@@ -26,4 +21,3 @@ function Cell (props) {
 }
 
 export default Cell
->>>>>>> 98fbf707e1b1031309431d781df1fc6ab3de6207
