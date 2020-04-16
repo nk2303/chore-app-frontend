@@ -44,7 +44,7 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
               />
               <br />
-              <UnassignedChoresContainer />
+              <UnassignedChoresContainer chores={this.props.chores} />
               <br />
               {(this.props.isAdmin) ?
                 (<div>
