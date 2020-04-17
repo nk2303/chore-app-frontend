@@ -3,7 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { api } from "../services/api";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const iconLibrary = [
@@ -104,6 +103,7 @@ class CreateChore extends Component {
               >
                 {iconLibrary.map((iconName) => (
                   <Form.Check
+                    key={iconName}
                     name="icon"
                     type="radio"
                     label={<FontAwesomeIcon icon={iconName} />}
