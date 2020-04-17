@@ -31,7 +31,9 @@ class CreateChore extends Component {
   };
 
   handleClose = () => {
-    this.setState({ show: false });
+    this.setState({
+      show: false,
+      validated: false});
   };
 
   handleShow = () => {
@@ -43,6 +45,7 @@ class CreateChore extends Component {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+      this.setState({ validated: true });
     } else {
       event.preventDefault();
       const newChore = {
@@ -67,7 +70,6 @@ class CreateChore extends Component {
         }
       });
     }
-    this.setState({ validated: true });
   };
 
   handleChange = (e) => {

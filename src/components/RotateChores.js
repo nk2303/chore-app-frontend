@@ -15,8 +15,13 @@ const RotateChores = (props) => {
     for (let i = 0; i < assignedChores.length; i++) {
       if (userIds.indexOf(assignedChores[i].user_id) === userIds.length - 1) {
         assignedChores[i].user_id = userIds[0]
+        assignedChores[i].day = null
+        assignedChores[i].completed = false
       } else {
         assignedChores[i].user_id = userIds[userIds.indexOf(assignedChores[i].user_id)+1]
+        assignedChores[i].day = null
+        assignedChores[i].completed = false
+
       }
       api.chore
         .updateChore({
