@@ -150,6 +150,7 @@ class App extends Component {
             onLogin={this.login}
             onReturningUser={this.returningUser} />} />
           <Route exact path='/account' render={(props) => <Account {...props}
+            handleLogout={this.logout}
             isAdmin={this.state.isAdmin}
             authUser={this.state.authUser}
             location={this.state.location}

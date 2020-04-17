@@ -5,7 +5,7 @@ import { api } from "../services/api";
 
 
 
-class LeaveHouse extends Component {
+class DeleteUser extends Component {
   state = {
     show: false,
   }
@@ -19,11 +19,11 @@ class LeaveHouse extends Component {
   }
 
   handleSubmit = () => {
-    const user = { user: { ...this.props.authUser, location_id: null } };
-    api.user.updateUser(user).then(resp => {
+    api.user.deleteUser(this.props.authUser.id).then(resp => {
       if (!resp.error) {
-        this.props.onLeaveHouse(resp);
+        this.props.onDeleteUser();
         this.handleClose();
+        this.props.history.push('/');
       }
     })
   }
@@ -31,19 +31,19 @@ class LeaveHouse extends Component {
   render() {
     return (
       <div>
-        <Button variant="danger" onClick={this.handleShow} block>
-          Leave your house
+        <Button variant="danger" onClick={this.handleShow} >
+          Delete Account
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Are you sure you want to leave your house?</Modal.Title>
+            <Modal.Title>Are you sure you want to delete your account?</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Button variant="danger" onClick={this.handleSubmit}>
-              Yes I want to leave!
+              Yes delete my account!
                 </Button>
             <Button variant="secondary" onClick={this.handleClose}>
-              Nope, I want to stay
+              Nope, take me back
                 </Button>
           </Modal.Body>
         </Modal>
@@ -52,4 +52,4 @@ class LeaveHouse extends Component {
   }
 }
 
-export default LeaveHouse
+export default DeleteUser
