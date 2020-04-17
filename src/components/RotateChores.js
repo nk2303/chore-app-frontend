@@ -35,7 +35,7 @@ const RotateChores = (props) => {
 
   return (
     <div>
-      <Button variant="info" onClick={rotateChores} block >Rotate Chores</Button>
+      <Button variant="secondary" onClick={rotateChores} block >Rotate Chores</Button>
     </div>
   );
 };
