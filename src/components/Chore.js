@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Modal, Accordion, Card, Button } from "react-bootstrap";
+import { Modal, Accordion, Card, Button, Col } from "react-bootstrap";
 import { api } from '../services/api';
 
 // Display Chore details: on click, setState to send clicked chore
@@ -53,8 +53,18 @@ const Chore = (props) => {
     return (user_id ? props.users.find(user => user.id === user_id).first_name : "Not assigned yet")
   }
 
+  const handleDrag = e => {
+    e.persist();
+    setTimeout(() => {
+      e.target.style.display = 'block';
+    }, 0);
+    e.target.style.display = 'block';
+    onDragStart(chore);
+  }
+
   return (
-      <Card className="chore-card" text='dark' style={{ width: "5rem" }} draggable={draggable} onDragStart={() => onDragStart(chore)}>
+    <Col className="col-4">
+      <Card className="chore-card" text='dark' style={{ width: "5rem"}} draggable={draggable} onDragStart={handleDrag}>
         <Accordion.Toggle as={Card.Header} eventKey="0">
           <Card.Img src={null}></Card.Img>
           <FontAwesomeIcon icon={icon} size="2x"/>
@@ -62,9 +72,9 @@ const Chore = (props) => {
         <Accordion.Collapse eventKey="0">
           <Card.Subtitle>{description}</Card.Subtitle>
         </Accordion.Collapse>
-        <Card.Title onClick={handleShow}>{name}</Card.Title>
+        <Card.Title className="font-16 text-align-center" onClick={handleShow}>{name}</Card.Title>
         <Modal
-          className="text-centered"
+          className="text-align-center"
           show={show}
           onHide={handleClose}
           animation={false}
@@ -87,6 +97,7 @@ const Chore = (props) => {
           </Modal.Footer>
         </Modal>
       </Card>
+  </Col>
   );
 
 };

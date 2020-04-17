@@ -37,7 +37,61 @@
   }
 }
 
+.text-bottom {
+  vertical-align: bottom;
+}
+
 .text-align-center {
   text-align: center;
 }
 
+.center-displayed {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto }
+
+.minHeight-200 {
+  min-height: 200px;
+}
+
+.minHeight-130 {
+  min-height: 130px;
+}
+
+.minHeight-300 {
+  min-height: 300px;
+}
+
+.minHeight-50 {
+  min-height: 50px;
+}
+
+.padding-top-25 {
+  padding-top: 25px;
+}
+
+.minHeight-700 {
+  min-height: 700px;
+}
+
+.white-font {
+  color: white;
+}
+
+.width-2px {
+  max-width: 2px;
+}
+
+.ontop {
+  top: 4.7em;
+}
+
+.white-trans-bg {
+  background-color: white;
+  opacity: 0.6;
+}
+
+.font-16 {
+  font-size: 16px;
+}

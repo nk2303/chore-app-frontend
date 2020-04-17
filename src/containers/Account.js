@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { api } from '../services/api';
 import Button from 'react-bootstrap/Button';
 import CreateHouse from '../components/CreateHouse';
-import LeaveHouse from '../components/LeaveHouse';
 import { Link } from 'react-router-dom';
 import EditUser from '../components/EditUser';
 import JoinHouse from '../components/JoinHouse';
 import DeleteUser from '../components/DeleteUser';
+import AccountFooter from "../components/AccountFooter";
 
 export default class Account extends Component {
 
@@ -35,8 +35,7 @@ export default class Account extends Component {
               <Button variant="outline-secondary" block>
                 <Link to='/house'>See the Calendar</Link>
               </Button>
-              {isAdmin ? null : 
-                <LeaveHouse authUser={authUser} onLeaveHouse={this.props.onUpdateUser} />}
+            
             </div>)
             :
             (<div>Join an Existing Household:
@@ -65,6 +64,7 @@ export default class Account extends Component {
             {isAdmin ? null : <DeleteUser authUser={authUser} onDeleteUser={this.props.handleLogout} history={history}/>}
           </div>
         </main>
+        <AccountFooter isAdmin={isAdmin} authUser={authUser} onUpdateUser={this.props.onUpdateUser}/>
         {isAdmin ?
           <div className='col-3'>
             <h5>Your House ID: {location.id} </h5>
