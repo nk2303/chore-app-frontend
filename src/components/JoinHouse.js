@@ -6,13 +6,16 @@ const JoinHouse = props => {
   const { authUser, onJoinHouse, history } = props;
 
   const [id, setId] = useState('');
+  const [error, setError] = useState(false);
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
+    console.log(event.currentTarget)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+      setValidated(true);
     } else {
       event.preventDefault();
       const userUpdatedLocation = {
@@ -22,11 +25,16 @@ const JoinHouse = props => {
       }
       api.user.updateUser(userUpdatedLocation)
         .then(resp => {
-          onJoinHouse(resp);
-          history.push('/house');
+          if (!resp.error) {
+            onJoinHouse(resp);
+            history.push('/house');
+          } else {
+            setError(resp.error)
+            setValidated(false);
+          }
         })
     }
-    setValidated(true);
+
   }
 
   return (
@@ -44,10 +52,11 @@ const JoinHouse = props => {
           <Form.Control.Feedback type="invalid">
             You must enter a house id.
             </Form.Control.Feedback>
+          {error ? <Form.Text> {error} </Form.Text> : null}
         </Form.Group>
         <Button variant="outline-secondary" type="submit" block>
           Join House
-                </Button>
+        </Button>
       </Form>
     </div>
   );
