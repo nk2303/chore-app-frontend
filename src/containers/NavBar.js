@@ -16,6 +16,7 @@ export default class NavBar extends React.Component {
       fontFamily: 'Chalkduster',
     };
 
+
     return (
       <div>
         <header id='topbar' className="row">
@@ -30,7 +31,7 @@ export default class NavBar extends React.Component {
                   <Link to='/account'>Account</Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link to='/house'>Your house</Link>
+                  <Link to='/house'>Schedule</Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <Link to='/about'>About</Link>
@@ -42,15 +43,15 @@ export default class NavBar extends React.Component {
               </Dropdown.Menu>
             </Dropdown>
           </div> : <div className="col-1" ></div>}
-          <div className="col-2">
+          <div className="col-3 font-16 text-bottom" >
             Made by Diana, Jonny and Kim
           </div>
 
-          <div className="col-4" style={titleStyle}>
+          <div className="col-3" style={titleStyle}>
             Choreganizer!
             </div>
 
-          {this.loggedIn() ? <div id="greeting" className="col-5">
+          {this.loggedIn() ? <div id="greeting" className="col-5 font-16 text-bottom">
             Welcome {this.props.authUser.first_name}!
             </div> : null}
 

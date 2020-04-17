@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { api } from '../services/api';
 import NavBar from './NavBar';
 import Landing from './Landing';
+import About from './About'
 import Account from './Account';
 import HouseContainer from './HouseContainer';
 import background from '../assets/recycling-texture.JPG';
@@ -21,7 +22,7 @@ library.add(fab, faCheckCircle, faBroom, faDumpster, faTrash, faUtensilSpoon, fa
 class App extends Component {
   sectionStyle = {
     backgroundImage: `url(${background})`,
-    minHeight: '800px',
+    minHeight: '1000px',
     backgroundSize: 'cover'
   };
 
@@ -60,14 +61,7 @@ class App extends Component {
 
   logout = () => {
     localStorage.removeItem("token");
-    this.setState({
-      authUser: {},
-      location: {},
-      users: [],
-      chores: [],
-      isAdmin: false,
-      draggedChore: null
-    });
+    this.setState({ authUser: {}, });
   };
 
   returningUser = data => {
@@ -75,12 +69,11 @@ class App extends Component {
   }
 
   setLocationInfo = data => {
-    console.log("under App", data);
     const { name, id, creator, users, chores } = data.location;
     this.setState({
       location: { name, id, creator },
-      users, //array of objs
-      chores //array of objs
+      users,
+      chores
     })
     this.isAdmin()
   }
@@ -157,18 +150,19 @@ class App extends Component {
             users={this.state.users}
             onUpdateUser={this.updateUser} />} />
           <Route exact path='/house' render={(props) => <HouseContainer {...props}
-            isAdmin={this.state.isAdmin}
-            authUser={this.state.authUser}
-            chores={this.state.chores}
-            users={this.state.users}
-            setLocationInfo={this.setLocationInfo}
-            onAddChore={this.addChore}
-            onCompleteChore={this.updateChore}
-            onDeleteChore={this.deleteChore}
-            onDragStart={this.onDragStart}
-            onDrop={this.onDrop} />
+                                isAdmin={this.state.isAdmin}
+                                authUser={this.state.authUser}
+                                chores={this.state.chores}
+                                users={this.state.users}
+                                setLocationInfo={this.setLocationInfo}
+                                onAddChore={this.addChore}
+                                onCompleteChore={this.updateChore}
+                                onDeleteChore={this.deleteChore}
+                                onDragStart={this.onDragStart}
+                                onDrop={this.onDrop} />
           }
           />
+          <Route exact path='/about' render={(props) => <About {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users}/>}/>
         </Router>
 
       </div>

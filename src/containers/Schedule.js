@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Accordion } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Chore from "../components/Chore";
+import '../App.css';
 import Cell from "../components/Cell";
 
 const Schedule = (props) => {
@@ -36,9 +37,9 @@ const Schedule = (props) => {
     let dayChores = findChoreByDay(day, user);
     return (
       <Fragment key={day} >
-      <td value={day} onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null } onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
-        <Cell>{dayChores.length > 0
-          ? <Accordion>{dayChores.map((chore) => buildChore(chore))}</Accordion>
+      <td className="full-border" value={day} onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null } onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
+        <Cell >{dayChores.length > 0
+          ? <Accordion className="width-2px" >{dayChores.map((chore) => buildChore(chore))}</Accordion>
           : null}
         </Cell>
       </td>
@@ -70,16 +71,16 @@ const Schedule = (props) => {
   };
   return (
     <div>
-      <Table striped bordered hover variant="dark">
-        <thead className="chalk-font text-align-center" style={transBG}>
+      <Table striped >
+        <thead className="chalk-font text-align-center white-font" style={transBG}>
           <tr>
             <th></th>
-            <th>MON</th>
-            <th>TUE</th>
-            <th>WED</th>
+            <th>MON </th>
+            <th>TUE </th>
+            <th>WED </th>
             <th>THUR</th>
-            <th>FRI</th>
-            <th>SAT</th>
+            <th>FRI </th>
+            <th>SAT </th>
             <th>SUN</th>
           </tr>
         </thead>
@@ -87,7 +88,7 @@ const Schedule = (props) => {
         {/* render rows based on users in house */}
         {/* each user row renders 5 <td>s with value equal to each day */}
         {/* chores are checked for user and assigned day and are rendered on correspondings <td> */}
-        <tbody className="chalk-font">
+        <tbody className="chalk-font white-font">
           {buildSchedule(users)}
           {renderAssignedChores(users)}
           <tr>

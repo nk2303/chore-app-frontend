@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import { api } from '../services/api';
-import Card from 'react-bootstrap/Card'
+import { Card } from 'react-bootstrap'
 
 
 export default class Landing extends Component {
@@ -37,11 +37,11 @@ export default class Landing extends Component {
         <span>
             <Card className="text-center opacity-60">
             <Card.Body>
-              <Card.Title>About Chore Oganizer App</Card.Title>
+              <Card.Title>Welcome to Choreganizer!</Card.Title>
+              <Card.Subtitle>Less Mess is Best</Card.Subtitle>
               <Card.Text>
-                We will write here if we have time. <br/>
-                With supporting text below as a natural lead-in to additional content.<br/>
-                Apparently we don't...
+                <br></br>
+                Choreganizer is a simple solution to the delegation of household chores to your and your housemates.<br></br> Create a house, add members, create chores, and have them tracked weekly in one convenient place.<br></br> Login today!
               </Card.Text>
             </Card.Body>
             </Card>

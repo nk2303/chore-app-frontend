@@ -3,10 +3,13 @@ import UserChoreContainer from "./UserChoreContainer";
 import UnassignedChoresContainer from "./UnassignedChoresContainer";
 import Schedule from "./Schedule";
 import CommentContainer from "./CommentContainer";
-import AssignChore from "../components/AssignChore";
 import DistributeChores from "../components/DistributeChores";
 import CreateChore from "../components/CreateChore";
+import RotateChores from "../components/RotateChores"
 import { api } from "../services/api";
+import '../App.css';
+import chalkboardImg from "../assets/chalkboardbackground.jpg"
+
 
 export default class HouseContainer extends Component {
   // landing page after login? Should display the current week schedule, your assigned chores, comments box, full figma main page
@@ -45,6 +48,18 @@ export default class HouseContainer extends Component {
     });
   };
 
+  filterScheduledChores = () => {
+    return this.props.chores.filter(chore => {
+      return (chore.day !== null)
+    });
+  };
+
+  scheduleStyle = {
+    backgroundImage: `url(${chalkboardImg})`,
+    backgroundSize: 'cover'
+  };
+
+
   render() {
     const { onDragStart, onDrop } = this.props;
     return (
@@ -79,16 +94,23 @@ export default class HouseContainer extends Component {
                     onAddChore={this.props.onAddChore}
                   />
                   <br />
-                  <AssignChore />
+                  
+                  <RotateChores
+                  users={this.props.users}
+                  chores={this.filterScheduledChores()}
+                  onAssignChore={this.props.onCompleteChore}
+                  />
+                  <br />
                   <DistributeChores
                     users={this.props.users}
                     chores={this.filterUnassignedChores()}
                     onAssignChore={this.props.onCompleteChore}
                   />
                 </div>
+                
               ) : null}
             </div>
-            <main id="mainbar" className="col-10">
+            <main id="mainbar" className="col-10 minHeight-700" style={this.scheduleStyle}>
               <Schedule
                 users={this.props.users}
                 chores={this.props.chores}
@@ -98,9 +120,9 @@ export default class HouseContainer extends Component {
                 isAdmin={this.props.isAdmin}
                 onDragStart={onDragStart}
                 onDrop={onDrop}/>
-              <CommentContainer />
+              
             </main>
-            <div id="comment-row" className="container-fluid row"></div>
+            <CommentContainer />
           </div>
           
         ) : (
