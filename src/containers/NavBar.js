@@ -30,7 +30,7 @@ export default class NavBar extends React.Component {
                   <Link to='/account'>Account</Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Link to='/house'>Your house</Link>
+                  <Link to='/house'>Schedule</Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <Link to='/about'>About</Link>
