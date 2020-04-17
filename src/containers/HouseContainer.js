@@ -6,6 +6,7 @@ import CommentContainer from "./CommentContainer";
 import AssignChore from "../components/AssignChore";
 import DistributeChores from "../components/DistributeChores";
 import CreateChore from "../components/CreateChore";
+import RotateChores from "../components/RotateChores"
 import { api } from "../services/api";
 
 export default class HouseContainer extends Component {
@@ -45,6 +46,12 @@ export default class HouseContainer extends Component {
     });
   };
 
+  filterScheduledChores = () => {
+    return this.props.chores.filter(chore => {
+      return (chore.day !== null)
+    });
+  };
+
   render() {
     const { onDragStart, onDrop } = this.props;
     return (
@@ -80,6 +87,11 @@ export default class HouseContainer extends Component {
                   />
                   <br />
                   <AssignChore />
+                  <RotateChores
+                  users={this.props.users}
+                  chores={this.filterScheduledChores()}
+                  onAssignChore={this.props.onCompleteChore}
+                  />
                   <DistributeChores
                     users={this.props.users}
                     chores={this.filterUnassignedChores()}

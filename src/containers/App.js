@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { api } from '../services/api';
 import NavBar from './NavBar';
 import Landing from './Landing';
+import About from './About'
 import Account from './Account';
 import HouseContainer from './HouseContainer';
 import background from '../assets/recycling-texture.JPG';
@@ -156,6 +157,7 @@ class App extends Component {
             onDrop={this.onDrop} />
           }
           />
+          <Route exact path='/about' render={(props) => <About {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users}/>}/>
         </Router>
 
       </div>
