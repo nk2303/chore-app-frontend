@@ -6,6 +6,7 @@ import LeaveHouse from '../components/LeaveHouse';
 import { Link } from 'react-router-dom';
 import EditUser from '../components/EditUser';
 import JoinHouse from '../components/JoinHouse';
+import DeleteUser from '../components/DeleteUser';
 
 export default class Account extends Component {
 
@@ -34,8 +35,8 @@ export default class Account extends Component {
               <Button variant="outline-secondary" block>
                 <Link to='/house'>See the Calendar</Link>
               </Button>
-              {isAdmin ? null : <LeaveHouse authUser={authUser} onLeaveHouse={this.props.onUpdateUser} />}
-              {/* add a delete house button  */}
+              {isAdmin ? null : 
+                <LeaveHouse authUser={authUser} onLeaveHouse={this.props.onUpdateUser} />}
             </div>)
             :
             (<div>Join an Existing Household:
@@ -60,7 +61,8 @@ export default class Account extends Component {
           </div>
           <br />
           <div>
-            <EditUser authUser={this.props.authUser} onEditUser={this.props.onUpdateUser}/>
+            <EditUser authUser={this.props.authUser} onEditUser={this.props.onUpdateUser}/><br />
+            {isAdmin ? null : <DeleteUser authUser={authUser} onDeleteUser={this.props.handleLogout} history={history}/>}
           </div>
         </main>
         {isAdmin ?
