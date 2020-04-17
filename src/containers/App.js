@@ -87,11 +87,19 @@ class App extends Component {
 
   updateUser = data => {
     this.setState(prev => {
-      return({
+      return ({
         authUser: data.user,
-        users: [...prev.users.filter(user=> user.id !== prev.authUser.id), data.user],
+        users: [...prev.users.filter(user => user.id !== prev.authUser.id), data.user],
       })
     })
+    if (this.state.authUser.location_id === null) {
+      this.setState({
+        location: {},
+        users: [],
+        chores: [],
+        isAdmin: false,
+      })
+    }
   }
 
   addChore = data => {

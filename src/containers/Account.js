@@ -34,7 +34,7 @@ export default class Account extends Component {
               <Button variant="outline-secondary" block>
                 <Link to='/house'>See the Calendar</Link>
               </Button>
-              {isAdmin ? null : <LeaveHouse />}
+              {isAdmin ? null : <LeaveHouse authUser={authUser} onLeaveHouse={this.props.onUpdateUser} />}
               {/* add a delete house button  */}
             </div>)
             :

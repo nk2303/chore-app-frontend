@@ -104,7 +104,9 @@ export default class HouseContainer extends Component {
           </div>
           
         ) : (
-          <h1>Join or Create a household on your account page!</h1>
+          <div className='text-center'>
+            <h3>Join or Create a household on your account page!</h3>
+          </div>
         )}
       </>
     );
