@@ -10,7 +10,6 @@ const JoinHouse = props => {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
-    console.log(event.currentTarget)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
