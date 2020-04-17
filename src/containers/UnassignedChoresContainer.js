@@ -36,7 +36,7 @@ export default function UnassignedChoresContainer(props) {
     backgroundSize: "cover",
   };
   return (
-    <div style={backgroundImg}>
+    <div style={backgroundImg} >
       <div>
           Unassigned Chores
           <Accordion>

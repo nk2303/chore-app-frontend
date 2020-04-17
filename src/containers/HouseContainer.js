@@ -60,6 +60,7 @@ export default class HouseContainer extends Component {
                 onDeleteChore={this.props.onDeleteChore}
                 onDragStart={onDragStart}
                 isAdmin={this.props.isAdmin}
+                onDrop={onDrop}
               />
               <br />
               <UnassignedChoresContainer
@@ -94,6 +95,7 @@ export default class HouseContainer extends Component {
                 authUser={this.props.authUser}
                 onCompleteChore={this.props.onCompleteChore}
                 isAdmin={this.props.isAdmin}
+                onDragStart={onDragStart}
                 onDrop={onDrop}/>
               <CommentContainer />
             </main>

@@ -20,7 +20,7 @@ export default function UserChoreContainer(props) {
           isAdmin={isAdmin}
           users={users}
           onDeleteChore={onDeleteChore}
-          onDrag={onDragStart}
+          onDragStart={onDragStart}
           draggable
           />
       );
@@ -35,7 +35,7 @@ export default function UserChoreContainer(props) {
   };
   return (
     <div style={backgroundImg}>
-      <div>
+      <div onDragOver={e => e.preventDefault()} onDrop={() => props.onDrop(null, authUser.id)}>
           Your Chores
           <Accordion>
             {displayChores(chores)}
