@@ -39,9 +39,9 @@ export default class Account extends Component {
             </div>)
             :
             (<div>Join an Existing Household:
-              <JoinHouse history={history} authUser={authUser} onJoinHouse={this.props.onAddHouse} />
+              <JoinHouse history={history} authUser={authUser} onJoinHouse={this.props.onUpdateUser} />
               <br />----- Or -----<br /><br />
-              <CreateHouse history={history} authUser={authUser} onAddHouse={this.props.onAddHouse} />
+              <CreateHouse history={history} authUser={authUser} onAddHouse={this.props.onUpdateUser} />
             </div>)
           }
           
@@ -60,7 +60,7 @@ export default class Account extends Component {
           </div>
           <br />
           <div>
-            <EditUser userInfo={this.props.authUser} />
+            <EditUser authUser={this.props.authUser} onEditUser={this.props.onUpdateUser}/>
           </div>
         </main>
         {isAdmin ?
