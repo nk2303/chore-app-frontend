@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Container, Row, Col, Card, Button, Accordion } from "react-bootstrap";
+import React, { Fragment } from "react";
+import { Accordion } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Chore from "../components/Chore";
 import Cell from "../components/Cell";
 
 const Schedule = (props) => {
-  const { authUser, chores, users, isAdmin, onCompleteChore, onDeleteChore, onDragStart, draggable} = props;
+  const { authUser, chores, users, isAdmin, onCompleteChore, onDeleteChore, onDragStart} = props;
   const week = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
   const userChores = (user) => {
@@ -20,6 +20,7 @@ const Schedule = (props) => {
 
   const buildChore = (chore) => {
     return <Chore 
+              key={chore.id}
               chore={chore}
               onCompleteChore={onCompleteChore}
               isAdmin={isAdmin}
@@ -30,30 +31,18 @@ const Schedule = (props) => {
               draggable
               />;
   };
-  // onDragOver={e => e.preventDefault()}
-  // onDrop={() => props.onDrop(day, user.id)}
-
-  // true ?
-  //     <><td value={day} >
-  //     <Cell>{dayChores.length > 0
-  //       ? <Accordion>{dayChores.map((chore) => buildChore(chore))}</Accordion>
-  //       : null}
-  //     </Cell>
-  //     </td>
-  //     </>
-  //     :
 
   const buildTD = (day, user) => {
     let dayChores = findChoreByDay(day, user);
     return (
-      <>
+      <Fragment key={day} >
       <td value={day} onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null } onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
         <Cell>{dayChores.length > 0
           ? <Accordion>{dayChores.map((chore) => buildChore(chore))}</Accordion>
           : null}
         </Cell>
       </td>
-      </>
+      </Fragment>
     );
   };
 
@@ -63,7 +52,7 @@ const Schedule = (props) => {
 
   const renderUserRows = (user) => {
     return (
-      <tr>
+      <tr key={user.id}>
         <td>{user.first_name}</td>
         {week.map((day) => buildTD(day, user))}
       </tr>
@@ -77,7 +66,7 @@ const Schedule = (props) => {
   };
 
   const transBG = {
-    "background-color": "transparent",
+    backgroundColor: "transparent",
   };
   return (
     <div>
@@ -102,7 +91,6 @@ const Schedule = (props) => {
           {buildSchedule(users)}
           {renderAssignedChores(users)}
           <tr>
-            <tr></tr>
           </tr>
         </tbody>
       </Table>

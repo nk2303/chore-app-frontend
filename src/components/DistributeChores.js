@@ -31,7 +31,7 @@ const DistributeChores = (props) => {
 
   return (
     <div>
-      <Button onClick={distributeChores}>Distribute Unassigned Chores</Button>
+      <Button variant="info" onClick={distributeChores} block >Distribute Unassigned Chores</Button>
     </div>
   );
 };

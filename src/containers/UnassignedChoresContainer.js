@@ -2,7 +2,6 @@ import React from "react";
 import Chore from "../components/Chore";
 // import broom from "../assets/broom.png";
 import paperBackground from "../assets/recyclepaper.jpg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Accordion } from "react-bootstrap";
 
 
@@ -16,6 +15,7 @@ export default function UnassignedChoresContainer(props) {
     return chores.map((chore) => {
       return (
         <Chore
+          key={chore.id}
           chore={chore}
           authUser={authUser}
           onCompleteChore={onCompleteChore}

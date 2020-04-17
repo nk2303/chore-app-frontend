@@ -14,6 +14,7 @@ export default function UserChoreContainer(props) {
     return chores.map((chore) => {
       return (
         <Chore
+          key={chore.id}
           chore={chore}
           authUser={authUser}
           onCompleteChore={onCompleteChore}

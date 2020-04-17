@@ -99,7 +99,9 @@ export default class HouseContainer extends Component {
                 onDrop={onDrop}/>
               <CommentContainer />
             </main>
+            <div id="comment-row" className="container-fluid row"></div>
           </div>
+          
         ) : (
           <h1>Join or Create a household on your account page!</h1>
         )}
