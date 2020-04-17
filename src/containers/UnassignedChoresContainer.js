@@ -1,8 +1,7 @@
 import React from "react";
 import Chore from "../components/Chore";
-// import broom from "../assets/broom.png";
-import paperBackground from "../assets/recyclepaper.jpg";
-import { Accordion } from "react-bootstrap";
+import translucentBackground from "../assets/translucent.png";
+import { Container } from "react-bootstrap";
 
 
 
@@ -32,17 +31,19 @@ export default function UnassignedChoresContainer(props) {
 
 
   const backgroundImg = {
-    backgroundImage: `url(${paperBackground})`,
+    backgroundImage: `url(${translucentBackground})`,
     backgroundSize: "cover",
   };
   return (
     <div style={backgroundImg} >
-      <div>
-          Unassigned Chores
-          <Accordion>
+      Unassigned Chores
+      <Container className="minHeight-300" >
+          <div className="row">
+          {/* <Accordion className="width-2px"> */}
             {displayChores(chores)}
-          </Accordion>
-      </div>
+          {/* </Accordion> */}
+          </div>
+      </Container>
     </div>
   );
 }
