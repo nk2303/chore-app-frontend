@@ -22,6 +22,7 @@ const iconLibrary = [
 class CreateChore extends Component {
   state = {
     show: false,
+    validated: false,
     fields: {
       name: "",
       description: "",
@@ -37,28 +38,36 @@ class CreateChore extends Component {
     this.setState({ show: true });
   };
 
-  handleSubmit = () => {
-    const newChore = {
-      chore: {
-        name: this.state.fields.name,
-        description: this.state.fields.description,
-        icon: this.state.fields.icon,
-        location_id: this.props.locationId,
-      },
-    };
-    api.chore.createChore(newChore).then((resp) => {
-      if (!resp.error) {
-        this.props.onAddChore(resp);
-        this.handleClose();
-        this.setState({
-          fields: {
-            name: "",
-            description: "",
-            icon: null,
-          },
-        });
-      }
-    });
+  handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      event.preventDefault();
+      const newChore = {
+        chore: {
+          name: this.state.fields.name,
+          description: this.state.fields.description,
+          icon: this.state.fields.icon,
+          location_id: this.props.locationId,
+        },
+      };
+      api.chore.createChore(newChore).then((resp) => {
+        if (!resp.error) {
+          this.props.onAddChore(resp);
+          this.handleClose();
+          this.setState({
+            fields: {
+              name: "",
+              description: "",
+              icon: null,
+            },
+          });
+        }
+      });
+    }
+    this.setState({ validated: true });
   };
 
   handleChange = (e) => {
@@ -78,15 +87,19 @@ class CreateChore extends Component {
             <Modal.Title>Create a new chore</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+            <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
               <Form.Group>
                 <Form.Control
+                  required
                   type="text"
                   name="name"
                   placeholder="Enter chore name"
                   onChange={(event) => this.handleChange(event)}
                   value={this.state.fields.name}
                 />
+                <Form.Control.Feedback type="invalid">
+                  You must enter a chore name.
+            </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Control
@@ -112,7 +125,7 @@ class CreateChore extends Component {
                 ))}
               </Form.Group>
               <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleSubmit}>
+                <Button variant="secondary" type="submit">
                   Add new chore!
                 </Button>
               </Modal.Footer>

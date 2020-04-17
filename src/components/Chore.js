@@ -10,7 +10,8 @@ const Chore = (props) => {
   const {
     draggable,
     onDragStart,
-    chore
+    chore,
+    onDeleteChore
   } = props;
 
   const {
@@ -43,7 +44,7 @@ const Chore = (props) => {
   const handleClickDelete = () => {
     api.chore.deleteChore(id)
     .then(resp => {
-      props.onDeleteChore(id);
+      onDeleteChore(id);
       handleClose();
     })
   }
