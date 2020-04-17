@@ -119,10 +119,14 @@ class App extends React.Component {
   }
 
   onDrop = (day, user_id) => {
-    this.setState(prevState => ({
-      draggedChore: null,
-      chores: prevState.chores.map(chore => prevState.draggedChore.id === chore.id ? ({...chore, day, user_id}) : chore)
-    }));
+    api.chore.updateChore( {chore: {...this.state.draggedChore, day, user_id}})
+    .then(resp => {
+      this.setState(prevState => ({
+        // draggedChore: null,
+        chores: prevState.chores.map(chore => prevState.draggedChore.id === chore.id ? ({...chore, day, user_id}) : chore)
+      }));
+    })
+    
   }
 
   render() {

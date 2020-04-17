@@ -5,7 +5,7 @@ import Chore from "../components/Chore";
 import Cell from "../components/Cell";
 
 const Schedule = (props) => {
-  const { authUser, chores, users, isAdmin, onCompleteChore, onDeleteChore } = props;
+  const { authUser, chores, users, isAdmin, onCompleteChore, onDeleteChore, onDragStart, draggable} = props;
   const week = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
   const userChores = (user) => {
@@ -19,18 +19,41 @@ const Schedule = (props) => {
   };
 
   const buildChore = (chore) => {
-    return <Chore chore={chore} onCompleteChore={onCompleteChore} isAdmin={isAdmin} authUser={authUser} users={users} onDeleteChore={onDeleteChore}/>;
+    return <Chore 
+              chore={chore}
+              onCompleteChore={onCompleteChore}
+              isAdmin={isAdmin}
+              authUser={authUser}
+              users={users}
+              onDeleteChore={onDeleteChore}
+              onDragStart={onDragStart}
+              draggable
+              />;
   };
+  // onDragOver={e => e.preventDefault()}
+  // onDrop={() => props.onDrop(day, user.id)}
+
+  // true ?
+  //     <><td value={day} >
+  //     <Cell>{dayChores.length > 0
+  //       ? <Accordion>{dayChores.map((chore) => buildChore(chore))}</Accordion>
+  //       : null}
+  //     </Cell>
+  //     </td>
+  //     </>
+  //     :
 
   const buildTD = (day, user) => {
     let dayChores = findChoreByDay(day, user);
     return (
-      <td value={day} onDrop={() => props.onDrop(day, user.id)} onDragOver={e => e.preventDefault()}>
+      <>
+      <td value={day} onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null } onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
         <Cell>{dayChores.length > 0
           ? <Accordion>{dayChores.map((chore) => buildChore(chore))}</Accordion>
           : null}
         </Cell>
       </td>
+      </>
     );
   };
 
