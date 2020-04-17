@@ -8,7 +8,6 @@ import { api } from '../services/api';
 const Chore = (props) => {
 
   const {
-    showChoreDetail,
     draggable,
     onDragStart,
     chore

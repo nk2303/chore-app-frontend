@@ -18,7 +18,7 @@ library.add(fab, faCheckCircle, faBroom, faDumpster, faTrash, faUtensilSpoon, fa
 // authUser gets looked up in database
 // chores.filter(user == authUser).map((chore) => chore.day? send to Schedule : UserChores)
 
-class App extends React.Component {
+class App extends Component {
   sectionStyle = {
     backgroundImage: `url(${background})`,
     minHeight: '800px',

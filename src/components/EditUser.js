@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { api } from '../services/api';
 
 class EditUser extends Component {
     state = {
