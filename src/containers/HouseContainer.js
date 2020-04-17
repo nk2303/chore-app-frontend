@@ -94,6 +94,7 @@ export default class HouseContainer extends Component {
                 chores={this.props.chores}
                 authUser={this.props.authUser}
                 onCompleteChore={this.props.onCompleteChore}
+                onDeleteChore={this.props.onDeleteChore}
                 isAdmin={this.props.isAdmin}
                 onDragStart={onDragStart}
                 onDrop={onDrop}/>
