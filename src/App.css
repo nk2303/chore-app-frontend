@@ -95,3 +95,13 @@
 .font-16 {
   font-size: 16px;
 }
+
+.full-border {
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.table td {
+  text-align: center
+}

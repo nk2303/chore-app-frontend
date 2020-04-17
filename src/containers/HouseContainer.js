@@ -100,6 +100,7 @@ export default class HouseContainer extends Component {
                   chores={this.filterScheduledChores()}
                   onAssignChore={this.props.onCompleteChore}
                   />
+                  <br />
                   <DistributeChores
                     users={this.props.users}
                     chores={this.filterUnassignedChores()}

@@ -37,7 +37,7 @@ const Schedule = (props) => {
     let dayChores = findChoreByDay(day, user);
     return (
       <Fragment key={day} >
-      <td value={day} onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null } onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
+      <td className="full-border" value={day} onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null } onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
         <Cell >{dayChores.length > 0
           ? <Accordion className="width-2px" >{dayChores.map((chore) => buildChore(chore))}</Accordion>
           : null}
@@ -75,12 +75,12 @@ const Schedule = (props) => {
         <thead className="chalk-font text-align-center white-font" style={transBG}>
           <tr>
             <th></th>
-            <th>MON</th>
-            <th>TUE</th>
-            <th>WED</th>
+            <th>MON </th>
+            <th>TUE </th>
+            <th>WED </th>
             <th>THUR</th>
-            <th>FRI</th>
-            <th>SAT</th>
+            <th>FRI </th>
+            <th>SAT </th>
             <th>SUN</th>
           </tr>
         </thead>
