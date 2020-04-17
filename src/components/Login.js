@@ -4,8 +4,6 @@ import Form from 'react-bootstrap/Form'
 import { api } from '../services/api';
 import '../App.css';
 
-// Login page. Poor bootstrap styling..
-
 export default class Login extends Component {
   constructor() {
     super();
@@ -36,7 +34,7 @@ export default class Login extends Component {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      this.setState({validated: true});
+      this.setState({ validated: true });
     } else {
       event.preventDefault()
       const user = {
@@ -50,18 +48,16 @@ export default class Login extends Component {
         if (!resp.error) {
           this.props.onLogin(resp);
           if (resp.user.location_id) {
-            // make fetch to location show and route to /house
-            // set state to include all returned info
             this.props.history.push('/house');
           } else {
             this.props.history.push('/account');
           }
         } else {
-          this.setState({ 
+          this.setState({
             error: resp.error,
             validated: false,
             username: '',
-            password: '' 
+            password: ''
           });
         }
       });
@@ -98,9 +94,9 @@ export default class Login extends Component {
                 value={this.state.password}
               />
               <Form.Control.Feedback type="invalid">
-                  Enter your password.
+                Enter your password.
             </Form.Control.Feedback>
-            {this.state.error ? <Form.Text> {this.state.error} </Form.Text> : null}
+              {this.state.error ? <Form.Text> {this.state.error} </Form.Text> : null}
             </Form.Group>
             <Button variant="secondary" type="submit" block>
               Log in

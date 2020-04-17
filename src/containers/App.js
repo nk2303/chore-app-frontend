@@ -85,16 +85,21 @@ class App extends Component {
     this.isAdmin()
   }
 
-  addHouse = data => {
-    this.setState({
-      authUser: data.user
+  updateUser = data => {
+    this.setState(prev => {
+      return ({
+        authUser: data.user,
+        users: [...prev.users.filter(user => user.id !== prev.authUser.id), data.user],
+      })
     })
-  }
-
-  addHouse = data => {
-    this.setState({
-      authUser: data.user
-    })
+    if (this.state.authUser.location_id === null) {
+      this.setState({
+        location: {},
+        users: [],
+        chores: [],
+        isAdmin: false,
+      })
+    }
   }
 
   addChore = data => {
@@ -129,7 +134,7 @@ class App extends Component {
     api.chore.updateChore({ chore: { ...this.state.draggedChore, day, user_id } })
       .then(resp => {
         this.setState(prevState => ({
-          // draggedChore: null,
+          draggedChore: null,
           chores: prevState.chores.map(chore => prevState.draggedChore.id === chore.id ? ({ ...chore, day, user_id }) : chore)
         }));
       })
@@ -141,8 +146,15 @@ class App extends Component {
       <div style={this.sectionStyle}>
         <Router>
           <NavBar handleLogout={this.logout} authUser={this.state.authUser} />
-          <Route exact path='/' render={(props) => <Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />} />
-          <Route exact path='/account' render={(props) => <Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />} />
+          <Route exact path='/' render={(props) => <Landing {...props}
+            onLogin={this.login}
+            onReturningUser={this.returningUser} />} />
+          <Route exact path='/account' render={(props) => <Account {...props}
+            isAdmin={this.state.isAdmin}
+            authUser={this.state.authUser}
+            location={this.state.location}
+            users={this.state.users}
+            onUpdateUser={this.updateUser} />} />
           <Route exact path='/house' render={(props) => <HouseContainer {...props}
             isAdmin={this.state.isAdmin}
             authUser={this.state.authUser}
