@@ -60,7 +60,14 @@ class App extends React.Component {
 
   logout = () => {
     localStorage.removeItem("token");
-    this.setState({ authUser: {}, });
+    this.setState({
+      authUser: {},
+      location: {},
+      users: [],
+      chores: [],
+      isAdmin: false,
+      draggedChore: null
+    });
   };
 
   returningUser = data => {
@@ -119,14 +126,14 @@ class App extends React.Component {
   }
 
   onDrop = (day, user_id) => {
-    api.chore.updateChore( {chore: {...this.state.draggedChore, day, user_id}})
-    .then(resp => {
-      this.setState(prevState => ({
-        // draggedChore: null,
-        chores: prevState.chores.map(chore => prevState.draggedChore.id === chore.id ? ({...chore, day, user_id}) : chore)
-      }));
-    })
-    
+    api.chore.updateChore({ chore: { ...this.state.draggedChore, day, user_id } })
+      .then(resp => {
+        this.setState(prevState => ({
+          // draggedChore: null,
+          chores: prevState.chores.map(chore => prevState.draggedChore.id === chore.id ? ({ ...chore, day, user_id }) : chore)
+        }));
+      })
+
   }
 
   render() {
@@ -138,16 +145,16 @@ class App extends React.Component {
           <Route exact path='/' render={(props) => <Landing {...props} onLogin={this.login} onReturningUser={this.returningUser} />} />
           <Route exact path='/account' render={(props) => <Account {...props} isAdmin={this.state.isAdmin} authUser={this.state.authUser} location={this.state.location} users={this.state.users} onAddHouse={this.addHouse} />} />
           <Route exact path='/house' render={(props) => <HouseContainer {...props}
-                                isAdmin={this.state.isAdmin}
-                                authUser={this.state.authUser}
-                                chores={this.state.chores}
-                                users={this.state.users}
-                                setLocationInfo={this.setLocationInfo}
-                                onAddChore={this.addChore}
-                                onCompleteChore={this.updateChore}
-                                onDeleteChore={this.deleteChore}
-                                onDragStart={this.onDragStart}
-                                onDrop={this.onDrop} />
+            isAdmin={this.state.isAdmin}
+            authUser={this.state.authUser}
+            chores={this.state.chores}
+            users={this.state.users}
+            setLocationInfo={this.setLocationInfo}
+            onAddChore={this.addChore}
+            onCompleteChore={this.updateChore}
+            onDeleteChore={this.deleteChore}
+            onDragStart={this.onDragStart}
+            onDrop={this.onDrop} />
           }
           />
         </Router>
