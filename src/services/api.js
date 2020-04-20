@@ -1,4 +1,4 @@
-const API_ROOT = `https://choreganizer.herokuapp.com/api/v1`;
+const API_ROOT = `https://choreganizerbackend.herokuapp.com/api/v1`;
 
 const token = () => localStorage.getItem("token");
 
