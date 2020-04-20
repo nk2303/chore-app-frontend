@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import Chore from "../components/Chore";
 import '../App.css';
 import Cell from "../components/Cell";
+import chalkboardImg from "../assets/chalkboardbackground.jpg"
 
 const Schedule = (props) => {
   const { authUser, chores, users, isAdmin, onCompleteChore, onDeleteChore, onDragStart} = props;
@@ -37,8 +38,11 @@ const Schedule = (props) => {
     let dayChores = findChoreByDay(day, user);
     return (
       <Fragment key={day} >
-      <td className="full-border" value={day} onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null } onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
-        <Cell >{dayChores.length > 0
+      <td className="border-right text-align-center" style={{paddingBottom: '5px'}}
+        value={day} 
+        onDrop={ (user.id === authUser.id) ? () => props.onDrop(day, user.id) : null }
+        onDragOver={(user.id === authUser.id) ? e => e.preventDefault() : null}>
+        <Cell  className="text-align-center">{dayChores.length > 0
           ? <Accordion className="width-2px" >{dayChores.map((chore) => buildChore(chore))}</Accordion>
           : null}
         </Cell>
@@ -54,7 +58,7 @@ const Schedule = (props) => {
   const renderUserRows = (user) => {
     return (
       <tr key={user.id}>
-        <td>{user.first_name}</td>
+        <td className="border-right text-align-center font-20 width-80">{user.first_name}</td>
         {week.map((day) => buildTD(day, user))}
       </tr>
     );
@@ -66,22 +70,25 @@ const Schedule = (props) => {
     chores.map((chore) => (chore.day ? console.log(chore) : null));
   };
 
-  const transBG = {
-    backgroundColor: "transparent",
+  const scheduleStyle = {
+    backgroundImage: `url(${chalkboardImg})`,
+    backgroundSize: 'cover',
+    minHeight: '700px'
   };
+
   return (
     <div>
-      <Table striped >
-        <thead className="chalk-font text-align-center white-font" style={transBG}>
-          <tr>
-            <th></th>
-            <th>MON </th>
-            <th>TUE </th>
-            <th>WED </th>
-            <th>THUR</th>
-            <th>FRI </th>
-            <th>SAT </th>
-            <th>SUN</th>
+      <Table striped style={scheduleStyle} >
+        <thead className="chalk-font text-align-center white-font">
+          <tr >
+            <th className="border-right"></th>
+            <th className="border-right" >MON </th>
+            <th className="border-right" >TUE </th>
+            <th className="border-right" >WED </th>
+            <th className="border-right" >THU</th>
+            <th className="border-right" >FRI </th>
+            <th className="border-right" >SAT </th>
+            <th className="border-right" >SUN </th>
           </tr>
         </thead>
         {/* And below is rendering */}
