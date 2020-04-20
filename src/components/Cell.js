@@ -1,10 +1,13 @@
 import React from 'react'
 // props.children
+import '../App.css';
 
 function Cell (props) {
+    const childr = props.children
+    // if (childr != null) { console.log(childr) }
+
     return (
-        <div className="width-2px minHeight-130 text-align-center">{props.children}</div>
-        // <div>{props.children}</div>
+        <div className="text-align-center minHeight-50" >{childr}</div>
     )
  
 }

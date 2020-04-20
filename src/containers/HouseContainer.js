@@ -110,7 +110,8 @@ export default class HouseContainer extends Component {
                 
               ) : null}
             </div>
-            <main id="mainbar" className="col-10 minHeight-700" style={this.scheduleStyle}>
+          
+            <main id="mainbar" className="col-10">
               <Schedule
                 users={this.props.users}
                 chores={this.props.chores}

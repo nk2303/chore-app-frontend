@@ -1,6 +1,5 @@
 import React from "react";
 import Chore from "../components/Chore";
-import translucentBackground from "../assets/translucent.png";
 import { Container } from "react-bootstrap";
 
 
@@ -29,15 +28,10 @@ export default function UnassignedChoresContainer(props) {
 
   // Unassigned chores / descriptions live here
 
-
-  const backgroundImg = {
-    backgroundImage: `url(${translucentBackground})`,
-    backgroundSize: "cover",
-  };
   return (
-    <div style={backgroundImg} >
-      Unassigned Chores
-      <Container className="minHeight-300" >
+    <div className="white-trans-bg">
+      <Container className="minHeight-300 ontop" >
+        Unassigned Chores
           <div className="row">
           {/* <Accordion className="width-2px"> */}
             {displayChores(chores)}
