@@ -1,7 +1,6 @@
 import React from "react";
 import Chore from "../components/Chore";
 import { Container } from "react-bootstrap";
-import translucentBackground from "../assets/translucent.png";
 
 
 export default function UserChoreContainer(props) {
@@ -12,7 +11,7 @@ export default function UserChoreContainer(props) {
   const displayChores = (chores) => {
     return chores.map((chore) => {
       return (
-        <Chore
+        <Chore className="opa-1"
           key={chore.id}
           chore={chore}
           authUser={authUser}
@@ -27,15 +26,11 @@ export default function UserChoreContainer(props) {
     });
   };
 
-  const backgroundImg = {
-    backgroundImage: `url(${translucentBackground})`,
-    backgroundSize: "cover",
-  };
 
   return (
-    <div style={backgroundImg}>
-      Your Chores
+    <div className="white-trans-bg" >
       <Container className="minHeight-300" onDragOver={e => e.preventDefault()} onDrop={() => props.onDrop(null, authUser.id)}>
+      Your Chores
           <div className="row">
             {/* <Accordion> */}
             {displayChores(chores)}

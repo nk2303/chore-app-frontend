@@ -1,4 +1,4 @@
-const API_ROOT = `http://localhost:3000/api/v1`;
+const API_ROOT = `https://choreganizerbackend.herokuapp.com/api/v1`;
 
 const token = () => localStorage.getItem("token");
 
@@ -9,9 +9,7 @@ const headers = () => {
     Authorization: token()
   };
 };
-
 //data must be nested objects ie {user: {id: ...}}
-
 const login = data => {
   return fetch(`${API_ROOT}/login`, {
     method: "POST",

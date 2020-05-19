@@ -49,7 +49,7 @@ export default class Account extends Component {
 
 
         <main id="mainbar" className="col-7">
-          <div>
+          <div className="white-trans-bg">
             <h5>Your account info: </h5>
               Your username: {username}<br />
               Your name: {first_name} {last_name} <br />
@@ -57,19 +57,21 @@ export default class Account extends Component {
               Your house: {location_id ? location.name : 'You do not belong to a house.'} <br />
               Your admin: {location.id ? users.find(user => user.id === location.creator).first_name : 'Create a house to become an admin'} <br />
               Your household members: {users.map(user => user.first_name).join(', ')} <br />
+              <div>
+              <br />
+              <EditUser authUser={this.props.authUser} onEditUser={this.props.onUpdateUser}/><br />
+              {isAdmin ? null : <DeleteUser authUser={authUser} onDeleteUser={this.props.handleLogout} history={history}/>}
           </div>
-          <br />
-          <div>
-            <EditUser authUser={this.props.authUser} onEditUser={this.props.onUpdateUser}/><br />
-            {isAdmin ? null : <DeleteUser authUser={authUser} onDeleteUser={this.props.handleLogout} history={history}/>}
           </div>
+          
         </main>
-        <AccountFooter isAdmin={isAdmin} authUser={authUser} onUpdateUser={this.props.onUpdateUser}/>
         {isAdmin ?
-          <div className='col-3'>
+          <div className='col-3 white-trans-bg'>
             <h5>Your House ID: {location.id} </h5>
             <h6>Your housemates can use this ID to join your household.</h6>
           </div> : null}
+        <AccountFooter isAdmin={isAdmin} authUser={authUser} onUpdateUser={this.props.onUpdateUser}/>
+        
       </div>
     )
   }
