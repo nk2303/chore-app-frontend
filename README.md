@@ -1,6 +1,9 @@
 # Choreganizer client
 
-Choreganizer is a simple solution to the delegation of household chores to your and your housemates. A user can create a house, add members, create chores, and distribute and track those chores in one convenient place. In the household of Choreganizer's creators, our calendar looks like this:
+
+Choreganizer is a simple solution to the delegation of household chores to you and your housemates. A user can create a house, add members, create chores, and distribute and track those chores in one convenient place. In the household of Choreganizer's creators, our calendar looks like this:
+=======
+
 
 ![Image of calendar with chores](public/thumbnailphoto.png)
 
