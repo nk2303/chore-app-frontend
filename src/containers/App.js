@@ -61,7 +61,13 @@ class App extends Component {
 
   logout = () => {
     localStorage.removeItem("token");
-    this.setState({ authUser: {}, });
+    this.setState({
+      authUser: {},
+      location: {},
+      users: [],
+      chores: [],
+      isAdmin: false,
+      draggedChore: null});
   };
 
   returningUser = data => {
