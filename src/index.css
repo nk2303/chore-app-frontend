@@ -20,9 +20,7 @@ code {
   color: black;
   font-size: 14px;
   text-align: right;
-  margin: 8px;
   margin-bottom: 40px;
-  /* vertical-align: middle */
 }
 
 
@@ -31,7 +29,6 @@ code {
 }
 
 .chore-card {
-  background-color: gray;
   font-family: BlinkMacSystemFont
   
 }

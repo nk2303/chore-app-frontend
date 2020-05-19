@@ -34,8 +34,8 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <span>
-            <Card className="text-center opacity-60">
+        <span className="white-trans-bg">
+            <Card className="text-center">
             <Card.Body>
               <Card.Title>Welcome to Choreganizer!</Card.Title>
               <Card.Subtitle>Less Mess is Best</Card.Subtitle>
