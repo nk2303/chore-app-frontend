@@ -1,3 +1,38 @@
+# Choreganizer client
+
+Choreganizer is a simple solution to the delegation of household chores to your and your housemates. A user can create a house, add members, create chores, and distribute and track those chores in one convenient place. In the household of Choreganizer's creators, our calendar looks like this:
+
+![Image of calendar with chores](public/thumbnailphoto.png)
+
+
+The frontend is built using React. The backend repo can be found [here](https://github.com/Jricecake/Mod-4-Choreganizer-Back-End) and you can visit the site [here](https://choreganizer-f0c34.web.app/).
+
+## Installation
+
+  To run locally, download or clone the repository, then run 'npm install'.
+  ```
+  npm install
+  ```
+  To run the project locally, use `npm start` or `yarn start` (more available commands listed below)
+  ```
+  npm start
+  ```
+  To use in conjunction with a locally hosted backend, the `API_ROOT` in `/src/services/api.js` will need to be updated to reflect your localhost. 
+
+## Authors
+
+Built by [Jonny Riecke](https://github.com/Jricecake), [Ngan Kim Khong](https://github.com/nk2303), and [Diana Wendt](https://github.com/dianakw8591).
+
+## Contributing
+
+Contributions are welcome. Feel free to open a pull request or branch from this project.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+_______
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
