@@ -19,7 +19,7 @@ export default class NavBar extends React.Component {
 
     return (
       <div>
-        <header id='topbar' className="row">
+        <header id='topbar' className="row pad-10 cntr">
           {this.loggedIn() ? <div className="col-1">
             <Dropdown>
               <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
@@ -43,7 +43,7 @@ export default class NavBar extends React.Component {
               </Dropdown.Menu>
             </Dropdown>
           </div> : <div className="col-1" ></div>}
-          <div className="col-3 font-16 text-bottom" >
+          <div className="col-3 font-16" >
             Made by Diana, Jonny and Kim
           </div>
 
@@ -51,7 +51,7 @@ export default class NavBar extends React.Component {
             Choreganizer!
             </div>
 
-          {this.loggedIn() ? <div id="greeting" className="col-5 font-16 text-bottom">
+          {this.loggedIn() ? <div id="greeting" className="col-5 font-16 text-align-center">
             Welcome {this.props.authUser.first_name}!
             </div> : null}
 

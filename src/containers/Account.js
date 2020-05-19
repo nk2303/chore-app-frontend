@@ -32,7 +32,7 @@ export default class Account extends Component {
         <div className='left-side-menu col-2 text-center'>
           {(location_id) ?
             (<div>
-              <Button variant="outline-secondary" block>
+              <Button variant="outline-secondary" className="btn" block>
                 <Link to='/house'>See the Calendar</Link>
               </Button>
             
@@ -49,7 +49,7 @@ export default class Account extends Component {
 
 
         <main id="mainbar" className="col-7">
-          <div className="white-trans-bg">
+          <div className="white-trans-bg pad-10">
             <h5>Your account info: </h5>
               Your username: {username}<br />
               Your name: {first_name} {last_name} <br />
@@ -66,7 +66,7 @@ export default class Account extends Component {
           
         </main>
         {isAdmin ?
-          <div className='col-3 white-trans-bg'>
+          <div className='col-3 white-trans-bg pad-10'>
             <h5>Your House ID: {location.id} </h5>
             <h6>Your housemates can use this ID to join your household.</h6>
           </div> : null}

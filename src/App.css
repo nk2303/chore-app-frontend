@@ -42,7 +42,7 @@
 }
 
 .text-align-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .vertical-center {
@@ -112,6 +112,17 @@
   padding: 6px !important;
 }
 
+.cntr {
+  align-items: center;
+}
+
+.bg-pp { background-image: url('./assets/recycling-texture.JPG') !important;}
+
+.pad-10 {
+  padding: 10px !important;
+}
+.pad-left { padding-left: 50px !important;}
+
 .border-right {
   border-right: 5px solid #ccc;  
 }
@@ -141,4 +152,3 @@
 .div.chore-card.card.text-dark {
   opacity: 1 !important
 }
-/* for column: border-top: 1px solid #dee2e6; */
