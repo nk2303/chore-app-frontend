@@ -9,9 +9,7 @@ const headers = () => {
     Authorization: token()
   };
 };
-
 //data must be nested objects ie {user: {id: ...}}
-
 const login = data => {
   return fetch(`${API_ROOT}/login`, {
     method: "POST",
